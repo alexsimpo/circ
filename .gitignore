@@ -1,0 +1,26 @@
+# Ignore node_modules directories
+**/node_modules
+
+# Ignore development build artifacts
+/public/
+/.next/
+/.vercel/
+
+# Ignore sanity build artifacts
+/.sanity/
+
+# Ignore build artifacts from the Sanity Studio
+/studio/dist/
+/studio/node_modules/
+/studio/.cache/
+/studio/.next/
+/studio/.studio/
+/studio/tsconfig.tsbuildinfo
+
+# Ignore build artifacts from the frontend app
+/frontend/build/
+/frontend/node_modules/
+/frontend/.cache/
+/frontend/.next/
+/frontend/out/
+/frontend/tsconfig.tsbuildinfo
