@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { createClient } from 'next-sanity';
 import { Header } from '../components/Header';
 import client from '../sanityClient';
 import { Menus, Projects } from '../types';
+import { Footer } from '../components/Footer';
 
 type Props = {
 	projects: Projects[];
@@ -15,11 +15,32 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const menus: Menus[] = await client.fetch(`
 	*[_type == 'menu'][0]{
 		headerMenu[]{
-		  label,
-		  url,
-		  'link': reference->{
-			_type,'slug': slug.current
-		  }
+			label,
+			url,
+			'link': reference->{
+				_type,'slug': slug.current
+		  	}
+		},
+		footerMenu[]{
+			label,
+			url,
+			'link': reference->{
+				_type,'slug': slug.current
+			}
+		},
+		copyright[]{
+			label,
+			url,
+			'link': reference->{
+			  _type,'slug': slug.current
+			}
+		},
+		socialMenu[]{
+			label,
+			url,
+			'link': reference->{
+			  _type,'slug': slug.current
+			}
 		}
 	  }
 	  `);
@@ -32,13 +53,22 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	};
 };
 
-export default function IndexPage({ projects, menus }: Props) {
+export default function IndexPage({ ...props }: Props) {
+	const { projects, menus } = props;
+	const headerMenu = menus['headerMenu'];
+	const footerMenu = menus['footerMenu'];
+	const copyrightMenu = menus['copyright'];
+	const socialMenu = menus['socialMenu'];
+
 	const hasProjects = projects.length > 0;
 
 	return (
 		<>
-			<Header menu={menus['headerMenu']} />
-			<main>
+			<Header menu={headerMenu} />
+			<main className="container py-12">
+				<div className="w-full">
+					<img src="/images/temp-logo.png" />
+				</div>
 				<h1 className="text-3xl font-bold underline">Hello world!</h1>
 				<h2>Projects</h2>
 				{hasProjects && (
@@ -64,6 +94,11 @@ export default function IndexPage({ projects, menus }: Props) {
 					</div>
 				)}
 			</main>
+			<Footer
+				menu={footerMenu}
+				copyrightMenu={copyrightMenu}
+				socialMenu={socialMenu}
+			/>
 		</>
 	);
 }

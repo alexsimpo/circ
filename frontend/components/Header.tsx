@@ -6,8 +6,6 @@ type HeaderProps = {
 };
 
 export const Header = ({ menu }: HeaderProps) => {
-	console.log('menu', menu);
-
 	return (
 		<header>
 			<div className="container">
