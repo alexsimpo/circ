@@ -1,35 +1,43 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
 import { createClient } from 'next-sanity';
-
-type Project = {
-	_createdAt: string;
-	_id: string;
-	_rev: string;
-	_type: string;
-	_updatedAt: string;
-	name: string;
-};
+import { Header } from '../components/Header';
+import client from '../sanityClient';
+import { Menus, Projects } from '../types';
 
 type Props = {
-	projects: Project[];
+	projects: Projects[];
+	menus: Menus[];
 };
 
-const client = createClient({
-	projectId: process.env.SANITY_PROJECT_ID,
-	dataset: 'production',
-	apiVersion: '2023-04-08',
-	useCdn: false,
-});
+export const getStaticProps: GetStaticProps<Props> = async () => {
+	const projects: Projects[] = await client.fetch(`*[_type == 'project']`);
+	const menus: Menus[] = await client.fetch(`
+	*[_type == 'menu'][0]{
+		headerMenu[]{
+		  label,
+		  url,
+		  'link': reference->{
+			_type,'slug': slug.current
+		  }
+		}
+	  }
+	  `);
 
-export default function IndexPage({ projects }: Props) {
+	return {
+		props: {
+			projects,
+			menus,
+		},
+	};
+};
+
+export default function IndexPage({ projects, menus }: Props) {
 	const hasProjects = projects.length > 0;
 
 	return (
 		<>
-			<header>
-				<h1>Sanity + Next.js</h1>
-			</header>
+			<Header menu={menus['headerMenu']} />
 			<main>
 				<h1 className="text-3xl font-bold underline">Hello world!</h1>
 				<h2>Projects</h2>
@@ -59,13 +67,3 @@ export default function IndexPage({ projects }: Props) {
 		</>
 	);
 }
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-	const projects: Project[] = await client.fetch(`*[_type == 'project']`);
-
-	return {
-		props: {
-			projects,
-		},
-	};
-};
