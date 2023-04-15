@@ -34,10 +34,22 @@ export default {
         maxLength: 200, // will be ignored if slugify is set
         slugify: (input: string) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: any) =>
+        Rule.custom((value: any, {document}: any) => {
+          // check if the current document's page title is "Home"
+          const isHomePage = document.title === 'Home'
+
+          // if it's the home page, ignore validation
+          if (isHomePage) {
+            return true
+          }
+
+          // otherwise, require the field
+          return value !== undefined && value !== null && value !== ''
+        }),
     },
     {
-      name: 'Header',
+      name: 'header',
       title: 'Header Section',
       type: 'object',
       group: 'content',

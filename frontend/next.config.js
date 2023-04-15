@@ -45,6 +45,15 @@ module.exports = {
 
 		return config;
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'cdn.sanity.io',
+				port: '',
+			},
+		],
+	},
 	env: {
 		SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
 	},

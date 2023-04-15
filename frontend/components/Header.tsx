@@ -10,8 +10,10 @@ export const Header = ({ menu }: HeaderProps) => {
 		<header>
 			<div className="container">
 				<div className="flex py-6">
-					<div className="w-1/2">CD</div>
-					<div className="w-1/2">
+					<div className="w-1/2 font-display text-2xl">
+						<Link href="/">cd</Link>
+					</div>
+					<div className="w-1/2 hidden sm:block">
 						<ul className="flex justify-between">
 							{menu.map((item, i) => (
 								<li

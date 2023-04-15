@@ -29,7 +29,15 @@ module.exports = {
 			'8xl': ['6rem', { lineHeight: '1' }],
 			'9xl': ['8rem', { lineHeight: '1' }],
 		},
-		extend: {},
+		extend: {
+			minHeight: {
+				'summary-experimental': 'calc(100svh - 5rem)',
+				summary: 'calc(100vh - 5rem)',
+			},
+			borderRadius: {
+				'4xl': '4rem',
+			},
+		},
 	},
 	plugins: [],
 };
