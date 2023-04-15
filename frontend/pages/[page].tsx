@@ -1,10 +1,9 @@
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import { Header } from 'components/Header';
 import client from 'sanityClient';
 import { Menus, Projects } from 'types';
 import { Footer } from 'components/Footer';
-import { LogoBlock } from 'components/LogoBlock';
 import { useRouter } from 'next/router';
 
 type Props = {
@@ -52,6 +51,22 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	};
 };
 
+export const getStaticPaths: GetStaticPaths = async () => {
+	const pages = await client.fetch(`
+	  *[_type == 'page'] {
+		slug {
+		  current
+		}
+	  }
+	`);
+
+	const paths = pages.map((page) => ({
+		params: { page: page.slug.current },
+	}));
+
+	return { paths, fallback: true };
+};
+
 export default function Page({ ...props }: Props) {
 	const router = useRouter();
 
@@ -68,9 +83,7 @@ export default function Page({ ...props }: Props) {
 	return (
 		<>
 			<Header menu={headerMenu} />
-			<main className="container py-4 lg:py-12 ">
-				<LogoBlock />
-			</main>
+			<main className="container py-4 lg:py-12 "></main>
 			<Footer
 				menu={footerMenu}
 				copyrightMenu={copyrightMenu}

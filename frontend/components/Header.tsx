@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MenuLink } from '../types';
+import { MenuLink } from 'types';
 
 type HeaderProps = {
 	menu: MenuLink[];
@@ -14,7 +14,10 @@ export const Header = ({ menu }: HeaderProps) => {
 					<div className="w-1/2">
 						<ul className="flex justify-between">
 							{menu.map((item, i) => (
-								<li key={i} className="font-semibold uppercase text-sm">
+								<li
+									key={i}
+									className="font-semibold uppercase text-sm tracking-wide"
+								>
 									<Link href={item.link.slug || item.url}>{item.label}</Link>
 								</li>
 							))}

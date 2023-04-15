@@ -12,6 +12,7 @@ module.exports = {
 		},
 		fontFamily: {
 			sans: ['UncutSans', 'Helvetica', 'Arial', 'sans-serif'],
+			display: ['EDNimpkish-Regular', 'Helvetica', 'Arial', 'sans-serif'],
 		},
 		fontSize: {
 			xs: ['0.75rem', { lineHeight: '1rem' }],

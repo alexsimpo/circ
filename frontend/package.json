@@ -8,6 +8,7 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@svgr/webpack": "^7.0.0",
     "autoprefixer": "^10.4.14",
     "next": "^13",
     "next-sanity": "^4.1.6",

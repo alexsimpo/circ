@@ -4,14 +4,15 @@ import { Header } from 'components/Header';
 import client from 'sanityClient';
 import { Menus, Projects } from 'types';
 import { Footer } from 'components/Footer';
-import { LogoBlock } from 'components/LogoBlock';
 import { useRouter } from 'next/router';
 
 type Props = {
+	projects: Projects[];
 	menus: Menus[];
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+	const projects: Projects[] = await client.fetch(`*[_type == 'project']`);
 	const menus: Menus[] = await client.fetch(`
 	*[_type == 'menu'][0]{
 		headerMenu[]{
@@ -47,6 +48,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 	return {
 		props: {
+			projects,
 			menus,
 		},
 	};
@@ -59,17 +61,41 @@ export default function Page({ ...props }: Props) {
 		return <div>Loading...</div>;
 	}
 
-	const { menus } = props;
+	const { projects, menus } = props;
 	const headerMenu = menus['headerMenu'];
 	const footerMenu = menus['footerMenu'];
 	const copyrightMenu = menus['copyright'];
 	const socialMenu = menus['socialMenu'];
 
+	const hasProjects = projects.length > 0;
+
 	return (
 		<>
 			<Header menu={headerMenu} />
 			<main className="container py-4 lg:py-12 ">
-				<LogoBlock />
+				<h2>Projects</h2>
+				{hasProjects && (
+					<ul>
+						{projects.map((project) => (
+							<li key={project._id}>{project?.name}</li>
+						))}
+					</ul>
+				)}
+				{hasProjects && (
+					<div>
+						<pre>{JSON.stringify(projects, null, 2)}</pre>
+					</div>
+				)}
+				{!hasProjects && <p>No projects to show</p>}
+				{!hasProjects && (
+					<div>
+						<div>¯\_(ツ)_/¯</div>
+						<p>
+							Your data will show up here when you've configured everything
+							correctly
+						</p>
+					</div>
+				)}
 			</main>
 			<Footer
 				menu={footerMenu}
