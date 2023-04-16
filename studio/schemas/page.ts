@@ -65,25 +65,20 @@ export default {
         {
           name: 'media',
           title: 'Media',
-          type: 'object',
-          options: {
-            collapsible: false,
-            collapsed: false,
-            columns: 2,
-          },
-          fields: [
-            {
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-            },
-            {
-              name: 'video',
-              title: 'Video',
-              type: 'file',
-            },
-          ],
+          type: 'media',
         },
+      ],
+    },
+    {
+      name: 'pageBuilder',
+      type: 'array',
+      title: 'Page builder',
+      of: [
+        {type: 'text-cta'},
+        {type: 'featured-projects'},
+        {type: 'divider'},
+        {type: 'rich-text'},
+        {type: 'cards'},
       ],
     },
     seo,

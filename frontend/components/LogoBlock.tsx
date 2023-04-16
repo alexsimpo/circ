@@ -71,7 +71,7 @@ export const LogoBlock = () => {
 			<Letter
 				defaultValue="e-caps"
 				data={[
-					{ value: 'half-ovals', component: <HalfOvalsFour /> },
+					{ value: 'half-ovals', component: <HalfOvalsThree /> },
 					{ value: 'e-caps', component: <E2 /> },
 				]}
 				width={12.1}
