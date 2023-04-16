@@ -59,9 +59,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		}
 	  }
 	`);
-
+	console.log(pages);
 	const paths = pages.map((page) => ({
-		params: { page: page.slug.current },
+		params: { page: page.slug ? page.slug.current : '/' },
 	}));
 
 	return { paths, fallback: true };

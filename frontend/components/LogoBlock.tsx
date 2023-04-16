@@ -116,8 +116,14 @@ export const LogoBlock = () => {
 
 const Letter = ({ defaultValue, data, width, noSpacing = false }) => {
 	const [currentValue, setCurrentValue] = useState(defaultValue);
+	const [disableMouseEnter, setDisableMouseEnter] = useState(false);
 
 	const handleMouseEnter = () => {
+		if (disableMouseEnter) {
+			return;
+		}
+
+		setDisableMouseEnter(true);
 		// Randomly select another letter from the data array
 		const randomValue = getRandomLetter(data, defaultValue).value;
 
@@ -127,6 +133,7 @@ const Letter = ({ defaultValue, data, width, noSpacing = false }) => {
 		// After 5 seconds, revert back to the default value
 		setTimeout(() => {
 			setCurrentValue(defaultValue);
+			setDisableMouseEnter(false);
 		}, 800);
 	};
 

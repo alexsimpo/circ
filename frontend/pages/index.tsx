@@ -92,7 +92,7 @@ export default function Page({ ...props }: Props) {
 									{page.header && page.header.description}
 								</h1>
 								<div className="p-4" />
-								<div className="relative w-full md:w-1/2 aspect-video rounded-4xl overflow-hidden ml-auto lg:ml-0 order-first lg:order-last">
+								<div className="relative w-full md:w-1/2 aspect-3/2 rounded-4xl overflow-hidden ml-auto lg:ml-0 order-first lg:order-last">
 									<Image
 										src={page.header.image.url}
 										alt={page.header.image.alt}
