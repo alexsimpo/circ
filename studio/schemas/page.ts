@@ -1,11 +1,10 @@
-import {DocumentVideoIcon} from '@sanity/icons'
 import seo from './seo'
 
 export default {
   name: 'page',
   title: 'Page',
   type: 'document',
-  icon: DocumentVideoIcon,
+  icon: () => '📕',
   groups: [
     {
       name: 'content',
@@ -73,6 +72,7 @@ export default {
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
+      group: 'content',
       of: [
         {type: 'text-cta'},
         {type: 'featured-projects'},

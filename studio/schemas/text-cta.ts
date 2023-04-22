@@ -1,7 +1,10 @@
+import {BlockContentIcon} from '@sanity/icons'
+
 export default {
   name: 'text-cta',
   type: 'object',
   title: 'Text CTA',
+  icon: BlockContentIcon,
   fields: [
     {
       name: 'heading',
@@ -13,7 +16,7 @@ export default {
           styles: [],
           lists: [],
           marks: {
-            decorators: [],
+            decorators: [{title: 'Underline', value: 'underline'}],
             annotations: [
               {
                 name: 'link',
@@ -35,7 +38,7 @@ export default {
     },
     {
       name: 'byline',
-      type: 'string',
+      type: 'text',
       title: 'Byline Text',
     },
     {

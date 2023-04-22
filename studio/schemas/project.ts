@@ -1,11 +1,10 @@
-import {DocumentVideoIcon} from '@sanity/icons'
 import seo from './seo'
 
 export default {
   name: 'project',
   type: 'document',
   title: 'Project',
-  icon: DocumentVideoIcon,
+  icon: () => '🖼',
   groups: [
     {
       name: 'content',

@@ -2,7 +2,7 @@
   "name": "hello-sanity-nextjs-starter",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "kill-port --port 3000 & next",
     "build": "next build",
     "start": "next start",
     "post-update": "yarn upgrade --latest"

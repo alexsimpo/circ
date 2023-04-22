@@ -1,7 +1,10 @@
+import {PresentationIcon} from '@sanity/icons'
+
 export default {
   name: 'featured-projects',
   type: 'object',
   title: 'Featured Projects',
+  icon: PresentationIcon,
   fields: [
     {
       name: 'heading',

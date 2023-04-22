@@ -1,7 +1,10 @@
+import {BlockquoteIcon} from '@sanity/icons'
+
 export default {
   name: 'rich-text',
   type: 'object',
   title: 'Text',
+  icon: BlockquoteIcon,
   fields: [
     {
       name: 'heading',

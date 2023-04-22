@@ -1,7 +1,10 @@
+import {InlineIcon} from '@sanity/icons'
+
 export default {
   name: 'cards',
   type: 'object',
   title: 'Cards',
+  icon: InlineIcon,
   fields: [
     {
       name: 'heading',

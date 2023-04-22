@@ -7,6 +7,9 @@ import { Footer } from 'components/Footer';
 import { LogoBlock } from 'components/LogoBlock';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import getMenus from 'api/getMenus';
+import getPage from 'api/getPage';
+import getContent from 'api/getContent';
 
 type Props = {
 	menus: Menus[];
@@ -14,54 +17,15 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-	const page = await client.fetch(`*[_type == 'page' && title == 'Home'][0] {
-		header {
-			title,
-			description,
-			'image': media.image.asset->{
-				alt,
-				_id,
-				url
-			}
-		},
-	}`);
-	const menus: Menus[] = await client.fetch(`
-	*[_type == 'menu'][0]{
-		headerMenu[]{
-			label,
-			url,
-			'link': reference->{
-				_type,'slug': slug.current
-		  	}
-		},
-		footerMenu[]{
-			label,
-			url,
-			'link': reference->{
-				_type,'slug': slug.current
-			}
-		},
-		copyright[]{
-			label,
-			url,
-			'link': reference->{
-			  _type,'slug': slug.current
-			}
-		},
-		socialMenu[]{
-			label,
-			url,
-			'link': reference->{
-			  _type,'slug': slug.current
-			}
-		}
-	  }
-	  `);
+	const page = await getPage('page', 'home');
+	const menus = await getMenus();
+	const content = await getContent('page', 'home');
 
 	return {
 		props: {
 			menus,
 			page,
+			content,
 		},
 	};
 };
@@ -78,21 +42,22 @@ export default function Page({ ...props }: Props) {
 	const footerMenu = menus['footerMenu'];
 	const copyrightMenu = menus['copyright'];
 	const socialMenu = menus['socialMenu'];
-	console.log(page);
+	console.log(props);
+	if (!page) return;
 	return (
 		<>
 			<Header menu={headerMenu} />
 			<main>
 				<section className="overflow-hidden">
 					<div className="container">
-						<div className="sm:min-h-summary-experimental sm:min-h-summary flex flex-col justify-between pb-8 sm:pb-16">
+						<div className="lg:min-h-summary-experimental lg:min-h-summary flex flex-col justify-between pb-8 sm:pb-16">
 							<LogoBlock />
 							<div className="flex flex-col justify-between pt-8 lg:flex-row">
-								<h1 className="text-xl font-medium w-full md:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">
+								<h1 className="text-xl lg:text-2xl font-medium w-full sm:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">
 									{page.header && page.header.description}
 								</h1>
 								<div className="p-4" />
-								<div className="relative w-full md:w-1/2 aspect-3/2 rounded-4xl overflow-hidden ml-auto lg:ml-0 order-first lg:order-last">
+								<div className="relative w-full lg:w-1/2 aspect-16/9 rounded-4xl overflow-hidden ml-auto lg:ml-0 order-first lg:order-last">
 									<Image
 										src={page.header.image.url}
 										alt={page.header.image.alt}
