@@ -16,14 +16,19 @@ export type Menus = {
 
 export type Menu = {
 	name: string;
-	menuItems: MenuLink[];
+	menuItems: ItemLink[];
 };
 
-export type MenuLink = {
+export type ItemLink = {
 	label: string;
 	url?: string;
-	link?: {
+	reference?: {
 		_type: string;
 		slug: string;
 	};
+};
+
+export type LinkReference = {
+	_type: string;
+	slug: string;
 };

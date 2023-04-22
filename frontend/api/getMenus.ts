@@ -7,28 +7,28 @@ export default async () => {
 		headerMenu[]{
 			label,
 			url,
-			'link': reference->{
+			reference->{
 				_type,'slug': slug.current
 		  	}
 		},
 		footerMenu[]{
 			label,
 			url,
-			'link': reference->{
+			reference->{
 				_type,'slug': slug.current
 			}
 		},
 		copyright[]{
 			label,
 			url,
-			'link': reference->{
+			reference->{
 			  _type,'slug': slug.current
 			}
 		},
 		socialMenu[]{
 			label,
 			url,
-			'link': reference->{
+			reference->{
 			  _type,'slug': slug.current
 			}
 		}

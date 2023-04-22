@@ -118,3 +118,12 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+/* Projekt Blackbird */
+@font-face {
+	font-family: 'ProjektBlackbird';
+	src: url('/fonts/projekt-blackbird.woff2') format('woff2'),
+		url('/fonts/projekt-blackbird.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

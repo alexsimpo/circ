@@ -5,48 +5,27 @@ import client from 'sanityClient';
 import { Menus, Projects } from 'types';
 import { Footer } from 'components/Footer';
 import { useRouter } from 'next/router';
+import getPage from 'api/getPage';
+import getMenus from 'api/getMenus';
+import getContent from 'api/getContent';
+import { getUrlFromStaticProps } from 'utils/pageUtils';
 
 type Props = {
 	menus: Menus[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-	const menus: Menus[] = await client.fetch(`
-	*[_type == 'menu'][0]{
-		headerMenu[]{
-			label,
-			url,
-			'link': reference->{
-				_type,'slug': slug.current
-		  	}
-		},
-		footerMenu[]{
-			label,
-			url,
-			'link': reference->{
-				_type,'slug': slug.current
-			}
-		},
-		copyright[]{
-			label,
-			url,
-			'link': reference->{
-			  _type,'slug': slug.current
-			}
-		},
-		socialMenu[]{
-			label,
-			url,
-			'link': reference->{
-			  _type,'slug': slug.current
-			}
-		}
-	  }
-	  `);
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+	const page = await getPage('page', getUrlFromStaticProps(params.page));
+	const menus = await getMenus();
+	const content = await getContent('page', getUrlFromStaticProps(params.page));
+
+	if (!page) return { notFound: true };
 
 	return {
 		props: {
 			menus,
+			page,
+			content,
 		},
 	};
 };
@@ -59,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		}
 	  }
 	`);
-	console.log(pages);
+
 	const paths = pages.map((page) => ({
 		params: { page: page.slug ? page.slug.current : '/' },
 	}));

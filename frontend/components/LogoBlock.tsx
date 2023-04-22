@@ -22,7 +22,7 @@ import CurvyG from 'public/images/letters/G/curvy-g.svg';
 import N from 'public/images/letters/N/n.svg';
 import Arch from 'public/images/letters/N/arch.svg';
 import { cn } from 'utils/classNameUtils';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const LogoBlock = () => {
 	return (
@@ -130,7 +130,7 @@ const Letter = ({ defaultValue, data, width, noSpacing = false }) => {
 		// Set the current value to the randomly selected letter
 		setCurrentValue(randomValue);
 
-		// After 5 seconds, revert back to the default value
+		// After 0.8 seconds, revert back to the default value
 		setTimeout(() => {
 			setCurrentValue(defaultValue);
 			setDisableMouseEnter(false);

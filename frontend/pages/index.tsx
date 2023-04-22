@@ -10,10 +10,13 @@ import Image from 'next/image';
 import getMenus from 'api/getMenus';
 import getPage from 'api/getPage';
 import getContent from 'api/getContent';
+import { getUrl } from 'utils/pageUtils';
+import { SectionBuilder } from 'components/SectionBuilder';
 
 type Props = {
 	menus: Menus[];
 	page: any;
+	content: any;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -21,11 +24,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	const menus = await getMenus();
 	const content = await getContent('page', 'home');
 
+	if (!page) return { notFound: true };
+
 	return {
 		props: {
 			menus,
 			page,
-			content,
+			content: content.pageBuilder,
 		},
 	};
 };
@@ -37,22 +42,21 @@ export default function Page({ ...props }: Props) {
 		return <div>Loading...</div>;
 	}
 
-	const { page, menus } = props;
+	const { page, menus, content } = props;
 	const headerMenu = menus['headerMenu'];
 	const footerMenu = menus['footerMenu'];
 	const copyrightMenu = menus['copyright'];
 	const socialMenu = menus['socialMenu'];
-	console.log(props);
-	if (!page) return;
+
 	return (
 		<>
 			<Header menu={headerMenu} />
 			<main>
 				<section className="overflow-hidden">
 					<div className="container">
-						<div className="lg:min-h-summary-experimental lg:min-h-summary flex flex-col justify-between pb-8 sm:pb-16">
+						<div className="lg:min-h-summary-experimental lg:min-h-summary flex flex-col justify-between pb-6 md:pb-12">
 							<LogoBlock />
-							<div className="flex flex-col justify-between pt-8 lg:flex-row">
+							<div className="flex flex-col justify-between pt-12 lg:flex-row">
 								<h1 className="text-xl lg:text-2xl font-medium w-full sm:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">
 									{page.header && page.header.description}
 								</h1>
@@ -69,6 +73,7 @@ export default function Page({ ...props }: Props) {
 						</div>
 					</div>
 				</section>
+				{content && <SectionBuilder content={content} />}
 			</main>
 			<Footer
 				menu={footerMenu}
