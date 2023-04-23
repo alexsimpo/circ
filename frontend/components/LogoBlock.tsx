@@ -22,7 +22,7 @@ import CurvyG from 'public/images/letters/G/curvy-g.svg';
 import N from 'public/images/letters/N/n.svg';
 import Arch from 'public/images/letters/N/arch.svg';
 import { cn } from 'utils/classNameUtils';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const LogoBlock = () => {
 	return (
