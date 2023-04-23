@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { Header } from 'components/Header';
+import { Header } from 'components/layout/Header';
 import client from 'sanityClient';
 import { Menus, Projects } from 'types';
-import { Footer } from 'components/Footer';
-import { LogoBlock } from 'components/LogoBlock';
+import { Footer } from 'components/layout/Footer';
+import { LogoBlock } from 'components/layout/LogoBlock';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import getMenus from 'api/getMenus';
@@ -12,6 +12,7 @@ import getPage from 'api/getPage';
 import getContent from 'api/getContent';
 import { getUrl } from 'utils/pageUtils';
 import { SectionBuilder } from 'components/SectionBuilder';
+import { Media } from 'components/media/Media';
 
 type Props = {
 	menus: Menus[];
@@ -61,18 +62,17 @@ export default function Page({ ...props }: Props) {
 									{page.header && page.header.description}
 								</h1>
 								<div className="p-4" />
-								<div className="relative w-full lg:w-1/2 aspect-16/9 rounded-4xl overflow-hidden ml-auto lg:ml-0 order-first lg:order-last">
-									<Image
-										src={page.header.image.url}
-										alt={page.header.image.alt}
-										fill
-										className="object-cover"
-									/>
-								</div>
+								<Media
+									ratio="16/9"
+									imageSrc={page.header.image.url}
+									alt={page.header.image.alt}
+									className="w-full lg:w-1/2 rounded-3xl ml-auto lg:ml-0 order-first lg:order-last"
+								/>
 							</div>
 						</div>
 					</div>
 				</section>
+				<section className="p-10 lg:pt-24" />
 				{content && <SectionBuilder content={content} />}
 			</main>
 			<Footer

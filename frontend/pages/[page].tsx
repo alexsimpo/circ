@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
-import { Header } from 'components/Header';
+import { Header } from 'components/layout/Header';
 import client from 'sanityClient';
 import { Menus, Projects } from 'types';
-import { Footer } from 'components/Footer';
+import { Footer } from 'components/layout/Footer';
 import { useRouter } from 'next/router';
 import getPage from 'api/getPage';
 import getMenus from 'api/getMenus';

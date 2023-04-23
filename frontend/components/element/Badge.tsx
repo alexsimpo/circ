@@ -1,22 +1,24 @@
 import { ComponentType } from 'react';
 import { cn } from 'utils/classNameUtils';
-import { Icon } from './media/Icon';
+import { Icon } from '../media/Icon';
 
-interface ButtonProps {
+interface BadgeProps {
 	className?: string;
 	href?: string;
 	size?: 'sm' | 'md' | 'lg';
 	as?: 'button' | 'a' | ComponentType<any>;
 	justify?: 'start' | 'center' | 'end' | 'between' | 'around';
+	theme?: string;
 }
 
-export const Button: React.FC<
-	ButtonProps & React.HTMLAttributes<HTMLButtonElement>
+export const Badge: React.FC<
+	BadgeProps & React.HTMLAttributes<HTMLButtonElement>
 > = ({
 	as: Component = 'button',
 	className,
 	size = 'md',
 	justify = 'between',
+	theme = 'green-500',
 	...props
 }) => {
 	return (
@@ -24,11 +26,11 @@ export const Button: React.FC<
 			{...props}
 			className={cn(
 				className,
-				'flex w-full items-center font-mono uppercase tracking-widest',
+				'flex items-center font-mono uppercase tracking-widest',
 				{
-					'text-xxs': size === 'sm',
-					'text-xs': size === 'md',
-					'text-sm': size === 'lg',
+					'rounded-sm text-badge-sm pt-1.5 pb-0.5 px-2.5 h-4': size === 'sm',
+					'rounded-md text-badge-md pt-2 pb-1.5 px-3 h-5': size === 'md',
+					'rounded-lg text-badge-lg pt-2.5 pb-2 px-3.5 h-6': size === 'lg',
 				},
 				{
 					'justify-start': justify === 'start',
@@ -36,18 +38,21 @@ export const Button: React.FC<
 					'justify-end': justify === 'end',
 					'justify-between': justify === 'between',
 					'justify-around': justify === 'around',
+				},
+				{
+					'bg-green-500 text-white': theme === 'green-500',
 				}
 			)}
 		/>
 	);
 };
 
-export const IconButton: React.FC<
-	ButtonProps & React.HTMLAttributes<HTMLButtonElement>
+export const IconBadge: React.FC<
+	BadgeProps & React.HTMLAttributes<HTMLButtonElement>
 > = ({ size = 'md', children, ...props }) => {
 	return (
 		<>
-			<Button
+			<Badge
 				{...props}
 				className={cn(props.className)}
 				children={

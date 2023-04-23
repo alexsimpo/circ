@@ -1,7 +1,7 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react';
-import { IconButton } from './Button';
+import { IconButton } from '../element/Button';
 import { getUrlFromLink } from 'utils/pageUtils';
-import { RichText } from './RichText';
+import { RichText } from '../RichText';
 
 type TextCta = {
 	section: any;

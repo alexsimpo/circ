@@ -7,6 +7,11 @@ export default async (type: string, slug: string) => {
 			_type,
 			...,
 			link {label, url, reference->{_type, 'slug': slug.current}},
+			"projects": projects[]->{
+				title,
+				'slug': slug.current,
+				"image": Header.media.image.asset->url
+			}
 		},
 	}`,
 		{ type, slug }

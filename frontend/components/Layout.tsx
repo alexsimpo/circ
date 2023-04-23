@@ -1,6 +1,6 @@
 // components/layout.js
 
-import { Header } from './Header';
+import { Header } from './layout/Header';
 
 export default function Layout({ children }) {
 	return (

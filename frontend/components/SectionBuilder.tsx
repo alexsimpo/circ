@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { TextCta } from './TextCta';
+import { TextCta } from './section/TextCta';
+import { FeaturedProjects } from './section/FeaturedProjects';
 
 type ContentProps = {
 	content: any[];
@@ -16,7 +17,7 @@ export const SectionBuilder = ({ content }: ContentProps) => {
 			case 'divider':
 				return <section key={index}>divider</section>;
 			case 'featured-projects':
-				return <section key={index}>featured-projects</section>;
+				return <FeaturedProjects key={index} section={section} />;
 			case 'cards':
 				return <section key={index}>cards</section>;
 			default:
