@@ -32,3 +32,51 @@ export type LinkReference = {
 	_type: string;
 	slug: string;
 };
+
+export type Media = {
+	_type: 'media';
+	image?: string;
+	video?: string;
+};
+
+export type Section = {
+	_type: 'cards' | 'featured-projects' | 'text-block' | 'text-cta' | 'divider';
+	heading?: string;
+	description?: string;
+	link?: ItemLink;
+};
+
+export type CardItem = {
+	_type: 'cardItem';
+	media?: Media;
+	heading?: string;
+	description?: string;
+	link?: ItemLink;
+};
+
+export type CardsSection = Section & {
+	items?: CardItem[];
+};
+
+export type TextCtaSection = Section & {
+	byline?: string;
+};
+
+export type FeaturedProjectsSection = Section & {
+	projects?: any[];
+};
+
+export type DividerSection = Section & {
+	theme?: 'light' | 'dark';
+};
+
+export type TextBlockSection = Section & {
+	text: string;
+};
+
+export type AllSections =
+	| CardsSection
+	| TextCtaSection
+	| FeaturedProjectsSection
+	| DividerSection
+	| TextBlockSection;

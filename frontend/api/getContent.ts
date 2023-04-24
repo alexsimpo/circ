@@ -11,6 +11,15 @@ export default async (type: string, slug: string) => {
 				title,
 				'slug': slug.current,
 				"image": Header.media.image.asset->url
+			},
+			"items": items[] {
+				heading,
+				description,
+				link {label, url, reference->{_type, 'slug': slug.current}},
+				media {
+					"image": image.asset->url,
+					"video": video.asset->url
+				}
 			}
 		},
 	}`,

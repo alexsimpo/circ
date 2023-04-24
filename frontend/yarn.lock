@@ -2594,6 +2594,11 @@ split2@^4.1.0:
   resolved "https://registry.yarnpkg.com/split2/-/split2-4.2.0.tgz#c9c5920904d148bab0b9f67145f245a86aadbfa4"
   integrity sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==
 
+ssr-window@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
+  integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+
 streamsearch@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-1.1.0.tgz#404dd1e2247ca94af554e841a8ef0eaa238da764"
@@ -2659,6 +2664,13 @@ svgo@^3.0.2:
     css-tree "^2.2.1"
     csso "^5.0.5"
     picocolors "^1.0.0"
+
+swiper@^9.2.4:
+  version "9.2.4"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-9.2.4.tgz#2fa3cf58cef586366f674a10fa56fe6eec2026fe"
+  integrity sha512-L7y3K/iiMXNYQ94FbfcJn7jex4QPnS4+voXGupTdC+UHW4XrR40QDdm4c9hXJ+Br0Il7PP0vP1W3goM9/Ly6Sg==
+  dependencies:
+    ssr-window "^4.0.2"
 
 tailwindcss@^3.3.1:
   version "3.3.1"

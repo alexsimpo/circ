@@ -24,7 +24,7 @@ export const Button: React.FC<
 			{...props}
 			className={cn(
 				className,
-				'flex w-full items-center font-mono uppercase tracking-widest',
+				'flex items-center font-mono uppercase tracking-widest',
 				{
 					'text-xxs': size === 'sm',
 					'text-xs': size === 'md',

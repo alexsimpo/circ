@@ -24,9 +24,18 @@ import Arch from 'public/images/letters/N/arch.svg';
 import { cn } from 'utils/classNameUtils';
 import { useState } from 'react';
 
-export const LogoBlock = () => {
+interface LogoBlockProps {
+	className?: string;
+}
+
+export const LogoBlock: React.FC<
+	LogoBlockProps & React.HTMLAttributes<HTMLDivElement>
+> = ({ className, ...props }) => {
 	return (
-		<div className="w-full flex items-center logo-block">
+		<div
+			{...props}
+			className={cn(className, 'w-full flex items-center logo-block')}
+		>
 			<Letter
 				defaultValue="c"
 				data={[

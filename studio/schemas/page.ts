@@ -77,7 +77,7 @@ export default {
         {type: 'text-cta'},
         {type: 'featured-projects'},
         {type: 'divider'},
-        {type: 'rich-text'},
+        {type: 'text-block'},
         {type: 'cards'},
       ],
     },

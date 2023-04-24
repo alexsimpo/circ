@@ -11,7 +11,7 @@ import media from './media'
 import textCta from './text-cta'
 import featuredProjects from './featured-projects'
 import divider from './divider'
-import richText from './rich-text'
+import textBlock from './text-block'
 import cards from './cards'
 
 export const schemaTypes = [
@@ -26,6 +26,6 @@ export const schemaTypes = [
   textCta,
   featuredProjects,
   divider,
-  richText,
+  textBlock,
   cards,
 ]

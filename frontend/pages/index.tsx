@@ -6,13 +6,12 @@ import { Menus, Projects } from 'types';
 import { Footer } from 'components/layout/Footer';
 import { LogoBlock } from 'components/layout/LogoBlock';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import getMenus from 'api/getMenus';
 import getPage from 'api/getPage';
 import getContent from 'api/getContent';
-import { getUrl } from 'utils/pageUtils';
 import { SectionBuilder } from 'components/SectionBuilder';
 import { Media } from 'components/media/Media';
+import { Button } from 'components/element/Button';
 
 type Props = {
 	menus: Menus[];
@@ -55,12 +54,20 @@ export default function Page({ ...props }: Props) {
 			<main>
 				<section className="overflow-hidden">
 					<div className="container">
-						<div className="lg:min-h-summary-experimental lg:min-h-summary flex flex-col justify-between pb-6 md:pb-12">
-							<LogoBlock />
-							<div className="flex flex-col justify-between pt-12 lg:flex-row">
-								<h1 className="text-xl lg:text-2xl font-medium w-full sm:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">
-									{page.header && page.header.description}
-								</h1>
+						<div className="flex flex-col justify-between pb-16 md:pb-32">
+							<LogoBlock className="lg:pt-8" />
+							<div className="flex flex-col justify-between pt-12 lg:pt-24 lg:flex-row">
+								<div className="w-full sm:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">
+									<h1 className="text-xl lg:text-2xl font-medium mb-8">
+										{page.header && page.header.description}
+									</h1>
+									<Button
+										as="a"
+										className=""
+										children="Read More"
+										href="/about"
+									/>
+								</div>
 								<div className="p-4" />
 								<Media
 									ratio="16/9"
@@ -72,8 +79,7 @@ export default function Page({ ...props }: Props) {
 						</div>
 					</div>
 				</section>
-				<section className="p-10 lg:pt-24" />
-				{content && <SectionBuilder content={content} />}
+				{content && SectionBuilder(content)}
 			</main>
 			<Footer
 				menu={footerMenu}
