@@ -10,6 +10,7 @@ interface MediaProps {
 	videoSrc?: string;
 	imageSrc?: string;
 	alt?: string;
+	fill?: boolean;
 }
 
 export const Media: React.FC<MediaProps> = ({
@@ -19,6 +20,7 @@ export const Media: React.FC<MediaProps> = ({
 	height,
 	ratio = '16/9',
 	videoSrc,
+	fill = false,
 	imageSrc,
 	alt,
 	...props
@@ -27,17 +29,22 @@ export const Media: React.FC<MediaProps> = ({
 
 	return (
 		<figure
-			className={cn(className, 'relative overflow-hidden', {
-				'aspect-1': ratio === '1',
-				'aspect-16/9': ratio === '16/9',
-				'aspect-3/2': ratio === '3/2',
-				'aspect-4/3': ratio === '4/3',
-				'aspect-5/4': ratio === '5/4',
-				'aspect-9/16': ratio === '9/16',
-				'aspect-2/3': ratio === '2/3',
-				'aspect-3/4': ratio === '3/4',
-				'aspect-4/5': ratio === '4/5',
-			})}
+			className={cn(
+				className,
+				'overflow-hidden transition-all group-hover:rounded-4xl h-full w-full',
+				fill ? 'absolute inset-0' : 'relative',
+				{
+					'aspect-1': ratio === '1',
+					'aspect-16/9': ratio === '16/9',
+					'aspect-3/2': ratio === '3/2',
+					'aspect-4/3': ratio === '4/3',
+					'aspect-5/4': ratio === '5/4',
+					'aspect-9/16': ratio === '9/16',
+					'aspect-2/3': ratio === '2/3',
+					'aspect-3/4': ratio === '3/4',
+					'aspect-4/5': ratio === '4/5',
+				}
+			)}
 		>
 			{(videoSrc && <video>video</video>) ||
 				(imageSrc && (

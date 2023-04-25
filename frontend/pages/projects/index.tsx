@@ -1,17 +1,13 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
 import { Header } from 'components/layout/Header';
-import client from 'sanityClient';
 import { Menus, Projects } from 'types';
 import { Footer } from 'components/layout/Footer';
-import { LogoBlock } from 'components/layout/LogoBlock';
 import { useRouter } from 'next/router';
 import getMenus from 'api/getMenus';
 import getPageHeader from 'api/getPageHeader';
 import getContent from 'api/getContent';
 import { SectionBuilder } from 'components/SectionBuilder';
-import { Media } from 'components/media/Media';
-import { Button } from 'components/element/Button';
 import getProjects from 'api/getProjects';
 import { FeaturedProjects } from 'components/section/FeaturedProjects';
 
@@ -58,27 +54,19 @@ export default function Page({ ...props }: Props) {
 		<>
 			<Header headerMenu={headerMenu} />
 			<main>
-				<section className="overflow-hidden">
+				{/* <section className="overflow-hidden">
 					<div className="container">
 						<div className="flex flex-col justify-between">
 							<h1 className="text-7xl font-display">proJects</h1>
 						</div>
 					</div>
-				</section>
-				{hasProjects && <FeaturedProjects projects={projects} />}
+				</section> */}
+				{hasProjects && (
+					<FeaturedProjects displayTitle={true} projects={projects} />
+				)}
 				{hasProjects && (
 					<div>
 						<pre>{JSON.stringify(projects, null, 2)}</pre>
-					</div>
-				)}
-				{!hasProjects && <p>No projects to show</p>}
-				{!hasProjects && (
-					<div>
-						<div>¯\_(ツ)_/¯</div>
-						<p>
-							Your data will show up here when you've configured everything
-							correctly
-						</p>
 					</div>
 				)}
 				{content && SectionBuilder(content)}

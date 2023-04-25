@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import { Menu } from 'types';
+import { cn } from 'utils/classNameUtils';
+import { getUrlFromLink } from 'utils/pageUtils';
 
-type HeaderProps = {
+interface HeaderProps {
 	headerMenu: Menu['menuItems'];
-};
+	className?: string;
+}
 
-export const Header = ({ headerMenu }: HeaderProps) => {
+export const Header: React.FC<HeaderProps> = ({ className, headerMenu }) => {
+	console.log(headerMenu);
 	return (
-		<header>
+		<header className={cn(className)}>
 			<div className="container">
 				<div className="flex py-5">
 					<div className="w-1/2 font-display text-2xl">
@@ -18,11 +22,9 @@ export const Header = ({ headerMenu }: HeaderProps) => {
 							{headerMenu.map((link, i) => (
 								<li
 									key={i}
-									className="font-semibold uppercase text-sm tracking-wide"
+									className="font-semibold uppercase text-sm tracking-wide hover:text-orange-500"
 								>
-									<Link href={link.reference.slug || link.url}>
-										{link.label}
-									</Link>
+									<Link href={getUrlFromLink(link)}>{link.label}</Link>
 								</li>
 							))}
 						</ul>

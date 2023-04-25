@@ -4,7 +4,7 @@ export const Divider: React.FC<DividerSection> = ({}) => {
 	return (
 		<section className="overflow-hidden">
 			<div className="container">
-				<hr className="border-black" />
+				<hr className="border-gray-200" />
 			</div>
 		</section>
 	);

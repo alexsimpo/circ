@@ -54,7 +54,7 @@ export default function Page({ ...props }: Props) {
 			<main>
 				<section className="overflow-hidden">
 					<div className="container">
-						<div className="flex flex-col justify-between pb-16 md:pb-32">
+						<div className="h-summary-experimental h-summary flex flex-col justify-between pb-8 md:pb-16">
 							<LogoBlock className="lg:pt-4" />
 							<div className="flex flex-col justify-between pt-8 lg:pt-16 lg:flex-row">
 								<div className="w-full sm:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">

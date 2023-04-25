@@ -9,9 +9,9 @@ export const TextCta: React.FC<TextCtaSection> = ({
 	link,
 }) => {
 	return (
-		<section className="overflow-hidden bg-orange-400">
+		<section className="overflow-hidden bg-orange-500">
 			<div className="container">
-				<div className="flex flex-col justify-center py-16 lg:py-32">
+				<div className="flex flex-col justify-center h-small-screen max-h-screen py-16 lg:py-32">
 					<div className="portable-text text-3xl font-medium lg:text-5xl md:w-3/4">
 						<RichText value={heading} />
 					</div>

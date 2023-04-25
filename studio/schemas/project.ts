@@ -45,11 +45,6 @@ export default {
       },
       fields: [
         {
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        },
-        {
           name: 'media',
           title: 'Media',
           type: 'object',
@@ -71,6 +66,55 @@ export default {
             },
           ],
         },
+      ],
+    },
+    {
+      name: 'details',
+      title: 'Details',
+      type: 'object',
+      group: 'content',
+      options: {
+        collapsible: true,
+      },
+      fields: [
+        {
+          name: 'year',
+          title: 'Year',
+          type: 'string',
+        },
+        {
+          name: 'location',
+          title: 'Location',
+          type: 'string',
+        },
+        {
+          name: 'scope',
+          title: 'Scope',
+          type: 'string',
+        },
+        {
+          name: 'credits',
+          title: 'Credits',
+          type: 'text',
+        },
+        {
+          name: 'description',
+          title: 'Description',
+          type: 'text',
+        },
+      ],
+    },
+    {
+      name: 'pageBuilder',
+      type: 'array',
+      title: 'Page builder',
+      group: 'content',
+      of: [
+        {type: 'text-cta'},
+        {type: 'featured-projects'},
+        {type: 'divider'},
+        {type: 'text-block'},
+        {type: 'cards'},
       ],
     },
     seo,

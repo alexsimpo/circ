@@ -20,9 +20,7 @@ export const Cards: React.FC<CardsSection> = ({
 					</div>
 					<Swiper
 						spaceBetween={16}
-						slidesPerView={3}
-						onSlideChange={() => console.log('slide change')}
-						onSwiper={(swiper) => console.log(swiper)}
+						slidesPerView={2.5}
 						className="w-3/4 ml-auto"
 					>
 						{items.map((item, index) => {

@@ -6,13 +6,15 @@ export default async (type: string, slug: string) => {
 		`*[_type == $type && slug.current == $slug][0] {
 		title,
 		header {
-			description,
 			'image': media.image.asset->{
 				alt,
 				_id,
 				url
 			}
 		},
+		details {
+			...
+		}
 	}`,
 		{ type, slug }
 	);

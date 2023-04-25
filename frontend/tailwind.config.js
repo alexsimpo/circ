@@ -45,6 +45,19 @@ module.exports = {
 			minHeight: {
 				'summary-experimental': 'calc(100svh - 4rem)',
 				summary: 'calc(100vh - 4rem)',
+				112: '28rem',
+				120: '30rem',
+				128: '32rem',
+			},
+			height: {
+				'summary-experimental': 'calc(100svh - 4rem)',
+				summary: 'calc(100vh - 4rem)',
+				112: '28rem',
+				'half-screen': '50vh',
+				'small-screen': '54rem',
+			},
+			maxHeight: {
+				'half-screen': '50vh',
 			},
 			borderRadius: {
 				'4xl': '4rem',
