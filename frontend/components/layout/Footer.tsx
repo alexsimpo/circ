@@ -1,31 +1,36 @@
 import Link from 'next/link';
-import { MenuLink } from 'types';
+import { Menu } from 'types';
 import { LogoBlock } from './LogoBlock';
+import { Button } from 'components/element/Button';
 
-type FooterProps = {
-	menu: MenuLink[];
-	copyrightMenu: MenuLink[];
-	socialMenu: MenuLink[];
-};
+interface FooterProps {
+	footerMenu: Menu['menuItems'];
+	copyrightMenu: Menu['menuItems'];
+	socialMenu: Menu['menuItems'];
+}
 
-export const Footer = ({ menu, copyrightMenu, socialMenu }: FooterProps) => {
+export const Footer: React.FC<FooterProps> = ({
+	footerMenu,
+	copyrightMenu,
+	socialMenu,
+}) => {
 	// console.log(require.resolve('/images/letters/C/c.svg'));
 	return (
-		<footer>
+		<footer className="border-t border-black">
 			<div className="container">
-				<div className="flex flex-col sm:flex-row justify-between pb-6 pt-10 sm:pb-16">
+				<div className="flex flex-col sm:flex-row justify-between pb-8 pt-8 lg:pt-16 lg:pb-16">
 					<div className="sm:w-1/2">
 						<h3 className="text-2xl pb-8">
 							We believe in creating great places with our clients through
 							collaborative design and ongoing conversations with community.
 						</h3>
-						<Link href="/contact">Get in Touch</Link>
+						<Button href="/contact" as="a" children="Get in Touch" />
 					</div>
 					<div className="flex flex-col justify-between pt-8 sm:w-1/4 sm:pt-0">
 						<ul className="flex pb-6 font-semibold uppercase text-sm tracking-wide">
-							{menu.map((item, i) => (
+							{footerMenu.map((item, i) => (
 								<li key={i} className="mr-6">
-									<Link href={item.link?.slug || item.url || ''}>
+									<Link href={item.reference?.slug || item.url || ''}>
 										{item.label}
 									</Link>
 								</li>
@@ -45,7 +50,7 @@ export const Footer = ({ menu, copyrightMenu, socialMenu }: FooterProps) => {
 							<li className="mr-6">&copy; Circ Design</li>
 							{copyrightMenu.map((item, i) => (
 								<li key={i} className="mr-6">
-									<Link href={item.link?.slug || item.url || ''}>
+									<Link href={item.reference?.slug || item.url || ''}>
 										{item.label}
 									</Link>
 								</li>
@@ -56,7 +61,7 @@ export const Footer = ({ menu, copyrightMenu, socialMenu }: FooterProps) => {
 						<ul className="flex font-semibold uppercase text-sm">
 							{socialMenu.map((item, i) => (
 								<li key={i} className="mr-6">
-									<Link href={item.link?.slug || item.url || ''}>
+									<Link href={item.reference?.slug || item.url || ''}>
 										{/* {console.log(socialMenu)} */}
 									</Link>
 								</li>

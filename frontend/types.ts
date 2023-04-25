@@ -7,6 +7,11 @@ export type Projects = {
 	name: string;
 };
 
+export type Menu = {
+	name: string;
+	menuItems: ItemLink[];
+};
+
 export type Menus = {
 	headerMenu: Menu['menuItems'];
 	footerMenu: Menu['menuItems'];
@@ -14,14 +19,10 @@ export type Menus = {
 	socialMenu: Menu['menuItems'];
 };
 
-export type Menu = {
-	name: string;
-	menuItems: ItemLink[];
-};
-
 export type ItemLink = {
 	label: string;
 	url?: string;
+	slug?: string;
 	reference?: {
 		_type: string;
 		slug: string;
@@ -37,6 +38,7 @@ export type Media = {
 	_type: 'media';
 	image?: string;
 	video?: string;
+	alt?: string;
 };
 
 export type Section = {

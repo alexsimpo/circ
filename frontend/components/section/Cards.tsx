@@ -1,9 +1,6 @@
 import { Media } from 'components/media/Media';
 import { CardItem, CardsSection, Section } from 'types';
-import { useRef, useEffect } from 'react';
-import { register } from 'swiper/element/bundle';
-
-register();
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const Cards: React.FC<CardsSection> = ({
 	heading,
@@ -11,20 +8,6 @@ export const Cards: React.FC<CardsSection> = ({
 	items,
 	...props
 }) => {
-	const swiperElRef = useRef(null);
-
-	useEffect(() => {
-		// listen for Swiper events using addEventListener
-		swiperElRef.current.addEventListener('progress', (e) => {
-			const [swiper, progress] = e.detail;
-			console.log(progress);
-		});
-
-		swiperElRef.current.addEventListener('slidechange', (e) => {
-			console.log('slide changed');
-		});
-	}, []);
-
 	return (
 		<section className="overflow-hidden">
 			<div className="container">
@@ -35,11 +18,19 @@ export const Cards: React.FC<CardsSection> = ({
 						</h2>
 						<p className="w-full lg:w-1/2">{description}</p>
 					</div>
-					<swiper-container ref={swiperElRef} class="gap-4 max-w-full lg:gap-6">
+					<Swiper
+						spaceBetween={16}
+						slidesPerView={3}
+						onSlideChange={() => console.log('slide change')}
+						onSwiper={(swiper) => console.log(swiper)}
+						className="w-3/4 ml-auto"
+					>
 						{items.map((item, index) => {
-							return <Card key={index} item={item} />;
+							return (
+								<SwiperSlide key={index} children={<Card item={item} />} />
+							);
 						})}
-					</swiper-container>
+					</Swiper>
 				</div>
 			</div>
 		</section>
@@ -48,21 +39,19 @@ export const Cards: React.FC<CardsSection> = ({
 
 const Card: React.FC<{ item: CardItem }> = ({ item }) => {
 	return (
-		<swiper-slide class="w-1/4">
-			<div className="flex flex-col h-full">
-				<div className="flex flex-col">
-					{item.media && (
-						<Media
-							ratio="3/2"
-							imageSrc={item.media.image}
-							alt={item.media.alt}
-							className="rounded-3xl"
-						/>
-					)}
-					<h3 className="text-xl font-medium pt-4">{item.heading}</h3>
-					<p className="pt-4">{item.description}</p>
-				</div>
+		<div className="flex flex-col h-full">
+			<div className="flex flex-col">
+				{item.media && (
+					<Media
+						ratio="3/2"
+						imageSrc={item.media.image}
+						alt={item.media.alt}
+						className="rounded-3xl"
+					/>
+				)}
+				<h3 className="text-xl font-medium pt-4">{item.heading}</h3>
+				<p className="pt-4">{item.description}</p>
 			</div>
-		</swiper-slide>
+		</div>
 	);
 };

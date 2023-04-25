@@ -50,13 +50,13 @@ export default function Page({ ...props }: Props) {
 
 	return (
 		<>
-			<Header menu={headerMenu} />
+			<Header headerMenu={headerMenu} />
 			<main>
 				<section className="overflow-hidden">
 					<div className="container">
 						<div className="flex flex-col justify-between pb-16 md:pb-32">
-							<LogoBlock className="lg:pt-8" />
-							<div className="flex flex-col justify-between pt-12 lg:pt-24 lg:flex-row">
+							<LogoBlock className="lg:pt-4" />
+							<div className="flex flex-col justify-between pt-8 lg:pt-16 lg:flex-row">
 								<div className="w-full sm:w-1/2 mt-auto lg:w-1/4 order-last lg:order-first">
 									<h1 className="text-xl lg:text-2xl font-medium mb-8">
 										{page.header && page.header.description}
@@ -82,7 +82,7 @@ export default function Page({ ...props }: Props) {
 				{content && SectionBuilder(content)}
 			</main>
 			<Footer
-				menu={footerMenu}
+				footerMenu={footerMenu}
 				copyrightMenu={copyrightMenu}
 				socialMenu={socialMenu}
 			/>

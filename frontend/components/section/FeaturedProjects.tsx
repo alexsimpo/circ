@@ -75,7 +75,7 @@ const ProjectCard: React.FC<ProjectCard> = ({
 		<div className={cn(className, 'row-span-1')}>
 			<Media ratio={ratio} imageSrc={project.image} className="rounded-3xl" />
 			<div className="flex items-center justify-between mt-4 ">
-				<h3 className="text-2xl font-medium hover:underline">
+				<h3 className="text-2xl font-medium hover:text-orange-500">
 					<Link href={`projects/${project.slug}`}>{project.title}</Link>
 				</h3>
 				<Badge className="ml-4" children={'category'} />

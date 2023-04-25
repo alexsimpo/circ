@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { ItemLink } from 'types';
+import { Menu } from 'types';
 
 type HeaderProps = {
-	menu: ItemLink[];
+	headerMenu: Menu['menuItems'];
 };
 
-export const Header = ({ menu }: HeaderProps) => {
+export const Header = ({ headerMenu }: HeaderProps) => {
 	return (
 		<header>
 			<div className="container">
@@ -15,7 +15,7 @@ export const Header = ({ menu }: HeaderProps) => {
 					</div>
 					<div className="w-1/2 hidden sm:block">
 						<ul className="flex justify-between">
-							{menu.map((link, i) => (
+							{headerMenu.map((link, i) => (
 								<li
 									key={i}
 									className="font-semibold uppercase text-sm tracking-wide"

@@ -2,7 +2,7 @@
   "name": "hello-sanity-nextjs-starter",
   "version": "1.0.0",
   "scripts": {
-    "dev": "kill-port --port 3000 & next",
+    "dev": "kill-port --port 3000 && next",
     "build": "next build",
     "start": "next start",
     "post-update": "yarn upgrade --latest"
@@ -12,6 +12,7 @@
     "@svgr/webpack": "^7.0.0",
     "@types/webpack-env": "^1.18.0",
     "autoprefixer": "^10.4.14",
+    "kill-port": "^2.0.1",
     "next": "^13",
     "next-sanity": "^4.1.6",
     "postcss": "^8.4.21",
