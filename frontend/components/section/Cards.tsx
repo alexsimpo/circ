@@ -41,11 +41,11 @@ const Card: React.FC<{ item: CardItem }> = ({ item }) => {
 	return (
 		<div className="flex flex-col h-full">
 			<div className="flex flex-col">
-				{item.media && (
+				{(item.image || item.video) && (
 					<Media
 						ratio="3/2"
-						imageSrc={item.media.image}
-						alt={item.media.alt}
+						imageSrc={item.image.url}
+						alt={item.image.alt}
 						className="rounded-3xl"
 					/>
 				)}

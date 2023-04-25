@@ -36,9 +36,20 @@ export type LinkReference = {
 
 export type Media = {
 	_type: 'media';
-	image?: string;
-	video?: string;
+	image?: Image;
+	video?: Video;
+};
+
+export type Image = {
+	id: string;
 	alt?: string;
+	url: string;
+};
+
+export type Video = {
+	id: string;
+	alt?: string;
+	url: string;
 };
 
 export type Section = {
@@ -50,7 +61,8 @@ export type Section = {
 
 export type CardItem = {
 	_type: 'cardItem';
-	media?: Media;
+	image?: Image;
+	video?: Video;
 	heading?: string;
 	description?: string;
 	link?: ItemLink;

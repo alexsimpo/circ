@@ -36,7 +36,7 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'Header',
+      name: 'header',
       title: 'Header Section',
       type: 'object',
       group: 'content',

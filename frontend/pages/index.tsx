@@ -7,7 +7,7 @@ import { Footer } from 'components/layout/Footer';
 import { LogoBlock } from 'components/layout/LogoBlock';
 import { useRouter } from 'next/router';
 import getMenus from 'api/getMenus';
-import getPage from 'api/getPage';
+import getPageHeader from 'api/getPageHeader';
 import getContent from 'api/getContent';
 import { SectionBuilder } from 'components/SectionBuilder';
 import { Media } from 'components/media/Media';
@@ -20,7 +20,7 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-	const page = await getPage('page', 'home');
+	const page = await getPageHeader('page', 'home');
 	const menus = await getMenus();
 	const content = await getContent('page', 'home');
 

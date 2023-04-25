@@ -10,15 +10,30 @@ export default async (type: string, slug: string) => {
 			"projects": projects[]->{
 				title,
 				'slug': slug.current,
-				"image": Header.media.image.asset->url
+				'image': header.media.image.asset->{
+					alt,
+					_id,
+					url
+				},
+				'video': header.media.video.asset->{
+					alt,
+					_id,
+					url
+				}
 			},
 			"items": items[] {
 				heading,
 				description,
 				link {label, url, reference->{_type, 'slug': slug.current}},
-				media {
-					"image": image.asset->url,
-					"video": video.asset->url
+				'image': media.image.asset->{
+					alt,
+					_id,
+					url
+				},
+				'video': media.video.asset->{
+					alt,
+					_id,
+					url
 				}
 			}
 		},

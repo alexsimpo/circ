@@ -4,52 +4,37 @@ import { Header } from 'components/layout/Header';
 import client from 'sanityClient';
 import { Menus, Projects } from 'types';
 import { Footer } from 'components/layout/Footer';
+import { LogoBlock } from 'components/layout/LogoBlock';
 import { useRouter } from 'next/router';
+import getMenus from 'api/getMenus';
+import getPageHeader from 'api/getPageHeader';
+import getContent from 'api/getContent';
+import { SectionBuilder } from 'components/SectionBuilder';
+import { Media } from 'components/media/Media';
+import { Button } from 'components/element/Button';
+import getProjects from 'api/getProjects';
+import { FeaturedProjects } from 'components/section/FeaturedProjects';
 
 type Props = {
 	projects: Projects[];
 	menus: Menus[];
+	content: any;
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-	const projects: Projects[] = await client.fetch(`*[_type == 'project']`);
-	const menus: Menus[] = await client.fetch(`
-	*[_type == 'menu'][0]{
-		headerMenu[]{
-			label,
-			url,
-			'link': reference->{
-				_type,'slug': slug.current
-		  	}
-		},
-		footerMenu[]{
-			label,
-			url,
-			'link': reference->{
-				_type,'slug': slug.current
-			}
-		},
-		copyright[]{
-			label,
-			url,
-			'link': reference->{
-			  _type,'slug': slug.current
-			}
-		},
-		socialMenu[]{
-			label,
-			url,
-			'link': reference->{
-			  _type,'slug': slug.current
-			}
-		}
-	  }
-	  `);
+	const menus = await getMenus();
+	const page = await getPageHeader('page', 'projects');
+	const content = await getContent('page', 'projects');
+	const projects = await getProjects();
+
+	if (!page) return { notFound: true };
 
 	return {
 		props: {
-			projects,
 			menus,
+			page,
+			projects,
+			content: content.pageBuilder,
 		},
 	};
 };
@@ -61,7 +46,7 @@ export default function Page({ ...props }: Props) {
 		return <div>Loading...</div>;
 	}
 
-	const { projects, menus } = props;
+	const { projects, menus, content } = props;
 	const headerMenu = menus['headerMenu'];
 	const footerMenu = menus['footerMenu'];
 	const copyrightMenu = menus['copyright'];
@@ -71,16 +56,16 @@ export default function Page({ ...props }: Props) {
 
 	return (
 		<>
-			<Header menu={headerMenu} />
-			<main className="container py-4 lg:py-12 ">
-				<h2>Projects</h2>
-				{hasProjects && (
-					<ul>
-						{projects.map((project) => (
-							<li key={project._id}>{project?.name}</li>
-						))}
-					</ul>
-				)}
+			<Header headerMenu={headerMenu} />
+			<main>
+				<section className="overflow-hidden">
+					<div className="container">
+						<div className="flex flex-col justify-between">
+							<h1 className="text-7xl font-display">proJects</h1>
+						</div>
+					</div>
+				</section>
+				{hasProjects && <FeaturedProjects projects={projects} />}
 				{hasProjects && (
 					<div>
 						<pre>{JSON.stringify(projects, null, 2)}</pre>
@@ -96,9 +81,10 @@ export default function Page({ ...props }: Props) {
 						</p>
 					</div>
 				)}
+				{content && SectionBuilder(content)}
 			</main>
 			<Footer
-				menu={footerMenu}
+				footerMenu={footerMenu}
 				copyrightMenu={copyrightMenu}
 				socialMenu={socialMenu}
 			/>

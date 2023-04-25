@@ -5,7 +5,7 @@ import client from 'sanityClient';
 import { Menus, Projects } from 'types';
 import { Footer } from 'components/layout/Footer';
 import { useRouter } from 'next/router';
-import getPage from 'api/getPage';
+import getPageHeader from 'api/getPageHeader';
 import getMenus from 'api/getMenus';
 import getContent from 'api/getContent';
 import { getUrlFromStaticProps } from 'utils/pageUtils';
@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-	const page = await getPage('page', getUrlFromStaticProps(params.page));
+	const page = await getPageHeader('page', getUrlFromStaticProps(params.page));
 	const menus = await getMenus();
 	const content = await getContent('page', getUrlFromStaticProps(params.page));
 
@@ -61,10 +61,10 @@ export default function Page({ ...props }: Props) {
 
 	return (
 		<>
-			<Header menu={headerMenu} />
+			<Header headerMenu={headerMenu} />
 			<main className="container py-4 lg:py-12 "></main>
 			<Footer
-				menu={footerMenu}
+				footerMenu={footerMenu}
 				copyrightMenu={copyrightMenu}
 				socialMenu={socialMenu}
 			/>
