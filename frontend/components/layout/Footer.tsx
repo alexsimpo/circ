@@ -57,9 +57,7 @@ export const Footer: React.FC<FooterProps> = ({
 						<ul className="flex font-semibold uppercase text-sm">
 							{socialMenu.map((link, i) => (
 								<li key={i} className="mr-6">
-									<Link href={getUrlFromLink(link)}>
-										{/* {console.log(socialMenu)} */}
-									</Link>
+									<Link href={getUrlFromLink(link)}></Link>
 								</li>
 							))}
 						</ul>

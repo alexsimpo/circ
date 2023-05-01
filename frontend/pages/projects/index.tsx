@@ -54,20 +54,17 @@ export default function Page({ ...props }: Props) {
 		<>
 			<Header headerMenu={headerMenu} />
 			<main>
-				{/* <section className="overflow-hidden">
+				<section className="overflow-hidden">
 					<div className="container">
-						<div className="flex flex-col justify-between">
-							<h1 className="text-7xl font-display">proJects</h1>
+						<div className="flex flex-row row-start-1 col-end-13 col-start-1 lg:flex-col lg:pt-16">
+							<h1 className="text-5xl lg:text-8xl font-display flex-1 lg:flex-none">
+								selEcted proJects
+							</h1>
 						</div>
 					</div>
-				</section> */}
+				</section>
 				{hasProjects && (
 					<FeaturedProjects displayTitle={true} projects={projects} />
-				)}
-				{hasProjects && (
-					<div>
-						<pre>{JSON.stringify(projects, null, 2)}</pre>
-					</div>
 				)}
 				{content && SectionBuilder(content)}
 			</main>

@@ -85,7 +85,7 @@ export default function Page({ ...props }: Props) {
 				</section>
 				<section>
 					<div className="container">
-						<div className={cn('flex flex-col py-6', 'lg:flex-row lg:py-12')}>
+						<div className={cn('flex flex-col py-4', 'lg:flex-row lg:py-8')}>
 							<div className="w-full lg:w-1/2">
 								<h1 className="text-8xl font-display max-w-md">{page.title}</h1>
 							</div>

@@ -10,6 +10,7 @@ export default async (type: string, slug: string) => {
 			"projects": projects[]->{
 				title,
 				'slug': slug.current,
+				'description': subtitle,
 				'image': header.media.image.asset->{
 					alt,
 					_id,

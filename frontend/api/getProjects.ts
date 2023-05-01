@@ -5,7 +5,10 @@ export default async () => {
 		`*[_type == 'project'] {
 			title,
 			'slug': slug.current,
-			'description': header.description,
+			'description': subtitle,
+			details {
+				...
+			},
 			'image': header.media.image.asset->{
 				alt,
 				_id,

@@ -24,6 +24,20 @@ export default {
       group: 'content',
     },
     {
+      name: 'display_title',
+      title: 'Display Title',
+      type: 'string',
+      description: 'The title of the page to display in the header',
+      group: 'content',
+    },
+    {
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'text',
+      description: 'The subtitle of the page',
+      group: 'content',
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
