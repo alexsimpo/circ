@@ -1,5 +1,8 @@
 // import { getPage } from '@/utils/serverUtils';
+import { SectionBuilder } from 'components/SectionBuilder';
 import { Metadata, ResolvingMetadata } from 'next';
+import { getUrlFromStaticProps } from 'utils/pageUtils';
+import getContent from 'utils/serverUtils/getContent';
 
 type PageProps = {
 	params: { slug?: string[] };
@@ -23,6 +26,10 @@ export async function generateMetadata(
 
 export default async function Page({ params }: PageProps) {
 	// const page = await getPage(params.slug || [], localeKey, searchParams);
+	const content = await getContent(
+		'page',
+		getUrlFromStaticProps(params.slug || 'home')
+	);
 
-	return <>Individual page</>;
+	return <SectionBuilder content={content.pageBuilder} />;
 }

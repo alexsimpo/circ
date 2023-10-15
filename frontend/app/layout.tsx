@@ -21,9 +21,7 @@ export default async function RootLayout({
 	// 	await Promise.all([
 	// 	]);
 	const [menus] = await Promise.all([getMenus()]);
-
 	const { headerMenu, footerMenu, copyrightMenu, socialMenu } = menus;
-	console.log(menus);
 	return (
 		<html>
 			<body>

@@ -1,3 +1,4 @@
+'use client';
 import { Media } from 'components/media/Media';
 import { CardItem, CardsSection, Section } from 'types';
 import { Swiper, SwiperSlide } from 'swiper/react';

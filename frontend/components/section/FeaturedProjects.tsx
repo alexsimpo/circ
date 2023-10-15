@@ -1,3 +1,4 @@
+'use client';
 import { Badge } from 'components/element/Badge';
 import { Button } from 'components/element/Button';
 import { Media } from 'components/media/Media';

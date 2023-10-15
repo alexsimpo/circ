@@ -5,7 +5,7 @@ import { Divider } from './section/Divider';
 import { Cards } from './section/Cards';
 import { AllSections } from 'types';
 
-export const SectionBuilder = (content: AllSections[]) => {
+export const SectionBuilder = ({ content }: { content: AllSections[] }) => {
 	if (!content) return;
 	return content.map((section, index) => {
 		switch (section._type) {
