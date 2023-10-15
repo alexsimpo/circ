@@ -18,7 +18,7 @@ export default async () => {
 				_type,'slug': slug.current
 			}
 		},
-		copyright[]{
+		copyrightMenu[]{
 			label,
 			url,
 			reference->{

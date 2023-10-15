@@ -30,6 +30,7 @@ module.exports = {
 	// Enable automatic JSX runtime
 	experimental: {
 		automaticRuntimeImports: true,
+		scrollRestoration: false,
 	},
 	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
 		config.module.rules.push({

@@ -105,25 +105,3 @@
 	font-weight: 700;
 	font-style: italic;
 }
-
-/* ED Nimpkish */
-@font-face {
-	font-family: 'EDNimpkish-Regular';
-	src: url('/fonts/ed-nimpkish-regular.eot');
-	src: url('/fonts/ed-nimpkish-regular.eot?#iefix') format('embedded-opentype'),
-		url('/fonts/ed-nimpkish-regular.woff2') format('woff2'),
-		url('/fonts/ed-nimpkish-regular.woff') format('woff'),
-		url('/fonts/ed-nimpkish-regular.ttf') format('truetype'),
-		url('/fonts/ed-nimpkish-regular.svg#youworkforthem') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-/* Projekt Blackbird */
-@font-face {
-	font-family: 'ProjektBlackbird';
-	src: url('/fonts/projekt-blackbird.woff2') format('woff2'),
-		url('/fonts/projekt-blackbird.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}

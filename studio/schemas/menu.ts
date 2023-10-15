@@ -47,7 +47,7 @@ export default {
       group: 'footer',
     },
     {
-      name: 'copyright',
+      name: 'copyrightMenu',
       type: 'array',
       title: 'Copyright',
       of: [{type: 'link'}],
@@ -57,26 +57,8 @@ export default {
       name: 'socialMenu',
       type: 'array',
       title: 'Social Menu',
+      of: [{type: 'link'}],
       group: 'social',
-      of: [
-        {
-          type: 'object',
-          name: 'socialLink',
-          title: 'Social Link',
-          fields: [
-            {
-              name: 'platform',
-              type: 'string',
-              title: 'Platform',
-            },
-            {
-              name: 'link',
-              type: 'link',
-              title: 'Link',
-            },
-          ],
-        },
-      ],
     },
   ],
   __experimental_actions: ['update', 'create', /* 'delete', */ 'publish'], // add or remove additional actions
