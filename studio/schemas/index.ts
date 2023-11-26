@@ -1,6 +1,6 @@
 // Documents
 import project from './project'
-import page from './page'
+import {pageType} from './page'
 import menu from './menu'
 
 // Objects
@@ -16,7 +16,7 @@ import cards from './cards'
 
 export const schemaTypes = [
   //   Documents
-  page,
+  pageType,
   project,
   menu,
   //   Objects

@@ -1,8 +1,8 @@
 // import {} from '@/utils/serverUtils';
-import { Header } from 'components/layout/Header';
+import { Header } from 'components/layout/header';
 import '../css/globals.css';
 import getMenus from 'utils/serverUtils/getMenus';
-import { Footer } from 'components/layout/Footer';
+import { Footer } from 'components/layout/footer';
 
 export const metadata = {
 	title: {

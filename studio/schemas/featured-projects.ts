@@ -12,6 +12,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'link',
+      type: 'link',
+      title: 'Link',
+    },
+    {
       name: 'projects',
       type: 'array',
       title: 'Projects',

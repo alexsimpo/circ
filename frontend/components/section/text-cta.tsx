@@ -1,7 +1,7 @@
 import { getUrlFromLink } from 'utils/pageUtils';
-import { RichText } from '../RichText';
 import { TextCtaSection } from 'types';
 import Link from 'next/link';
+import { RichText } from 'components/rich-text';
 
 export const TextCta: React.FC<TextCtaSection> = ({
 	heading,

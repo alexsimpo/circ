@@ -37,7 +37,9 @@ export const Header: React.FC<HeaderProps> = ({ className, headerMenu }) => {
 						</ul>
 					</div>
 					<div className="w-fit text-right hidden sm:block sm:w-1/4">
-						<Link href="/contact">Let's Chat</Link>
+						<Link className="hover:underline" href="/contact">
+							Let's Chat
+						</Link>
 					</div>
 				</div>
 			</div>

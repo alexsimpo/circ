@@ -1,6 +1,6 @@
 import { cn } from 'utils/classNameUtils';
-import type { Props as SvgProps } from './Svg';
-import { Svg } from './Svg';
+import type { Props as SvgProps } from './svg';
+import { Svg } from './svg';
 
 export type IconProps = SvgProps & {
 	className?: string;

@@ -2,8 +2,12 @@
 module.exports = {
 	content: [
 		'./app/**/*.{js,ts,jsx,tsx}',
+		'./components/section/*.{js,ts,jsx,tsx}',
 		'./components/**/*.{js,ts,jsx,tsx}',
+		'./components/*.{js,ts,jsx,tsx,mdx}',
 		'./pages/**/*.{js,ts,jsx,tsx}',
+		'./utils/*.{js,ts,jsx,tsx,mdx}',
+		'./utils/sectionUtils.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
 		container: {
@@ -60,6 +64,14 @@ module.exports = {
 			},
 			borderRadius: {
 				'4xl': '4rem',
+			},
+			colors: {
+				black: '#000000',
+				white: '#ffffff',
+				grey: '#767676',
+				green: '#2AA83E',
+				orange: '#EBB35F',
+				blue: '#1C79AD',
 			},
 			aspectRatio: {
 				'21/9': '21/9',

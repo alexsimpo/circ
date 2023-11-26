@@ -31,7 +31,7 @@ export const Media: React.FC<MediaProps> = ({
 		<figure
 			className={cn(
 				className,
-				'overflow-hidden transition-all group-hover:rounded-4xl h-full w-full',
+				'h-full w-full overflow-hidden transition-all',
 				fill ? 'absolute inset-0' : 'relative',
 				{
 					'aspect-1': ratio === '1',
@@ -48,7 +48,7 @@ export const Media: React.FC<MediaProps> = ({
 		>
 			{(videoSrc && <video>video</video>) ||
 				(imageSrc && (
-					<Image src={imageSrc} alt={alt} fill className="object-cover" />
+					<Image loading="lazy" src={imageSrc} alt={alt || 'default'} fill className="object-cover" />
 				))}
 		</figure>
 	);

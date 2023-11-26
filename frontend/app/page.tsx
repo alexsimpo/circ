@@ -4,10 +4,13 @@ import { HeroText } from 'components/layout/hero-text';
 import { Metadata, ResolvingMetadata } from 'next';
 import { getUrlFromStaticProps } from 'utils/pageUtils';
 import getContent from 'utils/serverUtils/getContent';
-import getProjects from 'utils/serverUtils/getProjects';
-import { FeaturedProjects } from 'components/section/projects';
+
+type PageProps = {
+	params: { slug?: string[] };
+};
 
 export async function generateMetadata(
+	{ params }: PageProps,
 	parent: ResolvingMetadata
 ): Promise<Metadata> {
 	// const { meta } = await getPage(params.slug || [], localeKey, searchParams);
@@ -23,12 +26,13 @@ export async function generateMetadata(
 }
 
 export default async function Page() {
-	const page = await getContent('page', 'projects');
-	const projects = await getProjects();
+	// const page = await getPage(params.slug || [], localeKey, searchParams);
+	const content = await getContent('page', 'home');
 
 	return (
 		<>
-			<FeaturedProjects projects={projects} />
+			<HeroText />
+			<SectionBuilder content={content.pageBuilder} />
 		</>
 	);
 }

@@ -1,10 +1,10 @@
+import {defineArrayMember, defineField, defineType} from 'sanity'
 import seo from './seo'
 
-export default {
+export const pageType = defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
-  icon: () => '📕',
   groups: [
     {
       name: 'content',
@@ -16,14 +16,14 @@ export default {
     },
   ],
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       description: 'The title of the page',
       group: 'content',
-    },
-    {
+    }),
+    defineField({
       title: 'Slug',
       name: 'slug',
       type: 'slug',
@@ -46,8 +46,8 @@ export default {
           // otherwise, require the field
           return value !== undefined && value !== null && value !== ''
         }),
-    },
-    {
+    }),
+    defineField({
       name: 'header',
       title: 'Header Section',
       type: 'object',
@@ -67,20 +67,20 @@ export default {
           type: 'media',
         },
       ],
-    },
-    {
+    }),
+    defineField({
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
       group: 'content',
       of: [
-        {type: 'text-cta'},
-        {type: 'featured-projects'},
-        {type: 'divider'},
-        {type: 'text-block'},
-        {type: 'cards'},
+        defineArrayMember({name: 'text-cta', type: 'text-cta'}),
+        defineArrayMember({name: 'featured-projects', type: 'featured-projects'}),
+        defineArrayMember({name: 'divider', type: 'divider'}),
+        defineArrayMember({name: 'text-block', type: 'text-block'}),
+        defineArrayMember({name: 'cards', type: 'cards'}),
       ],
-    },
+    }),
     seo,
   ],
-}
+})

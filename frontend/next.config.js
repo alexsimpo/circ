@@ -29,7 +29,6 @@ module.exports = {
 	reactStrictMode: true,
 	// Enable automatic JSX runtime
 	experimental: {
-		automaticRuntimeImports: true,
 		scrollRestoration: false,
 	},
 	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {

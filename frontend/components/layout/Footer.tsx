@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Menu } from 'types';
-import { Button } from 'components/element/Button';
+import { Button } from 'components/element/button';
 import { getUrlFromLink } from 'utils/pageUtils';
 import Logo from 'images/logo.svg';
 

@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { TextCta } from './section/TextCta';
-import { FeaturedProjects } from './section/FeaturedProjects';
-import { Divider } from './section/Divider';
-import { Cards } from './section/Cards';
+import { TextCta } from './section/text-cta';
+import { FeaturedProjects } from './section/projects';
+import { Divider } from './section/divider';
+import { Cards } from './section/cards';
 import { AllSections } from 'types';
 
 export const SectionBuilder = ({ content }: { content: AllSections[] }) => {

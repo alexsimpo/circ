@@ -1,5 +1,5 @@
 // import { getPage } from '@/utils/serverUtils';
-import { SectionBuilder } from 'components/SectionBuilder';
+import { SectionBuilder } from 'components/section-builder';
 import { Metadata, ResolvingMetadata } from 'next';
 import { getUrlFromStaticProps } from 'utils/pageUtils';
 import getContent from 'utils/serverUtils/getContent';
@@ -31,5 +31,5 @@ export default async function Page({ params }: PageProps) {
 		getUrlFromStaticProps(params.slug || 'home')
 	);
 
-	return <SectionBuilder content={content.pageBuilder} />;
+	// return <SectionBuilder content={content.pageBuilder} />;
 }

@@ -1,77 +1,116 @@
-import { ComponentType } from 'react';
 import { cn } from 'utils/classNameUtils';
-import { Icon } from '../media/Icon';
+import Link from 'next/link';
 
 interface ButtonProps {
-	className?: string;
+	link?: any;
+	type?: string;
 	href?: string;
-	size?: 'sm' | 'md' | 'lg';
-	as?: 'button' | 'a' | ComponentType<any>;
-	justify?: 'start' | 'center' | 'end' | 'between' | 'around';
+	label?: string;
+	ariaLabel?: string;
+	className?: string;
+	outline?: boolean;
+	style?: React.CSSProperties;
+	buttonType?: 'button' | 'submit' | 'reset';
 }
 
-export const Button: React.FC<
-	ButtonProps & React.HTMLAttributes<HTMLButtonElement>
-> = ({
-	as: Component = 'button',
+export const Button = ({
+	link,
+	type = link && link.type,
+	href = link ? link.url : '',
+	label = link && link.label ? link.label : 'Read More',
+	ariaLabel = label,
 	className,
-	size = 'md',
-	justify = 'between',
-	...props
-}) => {
-	return (
-		<Component
-			{...props}
-			className={cn(
-				className,
-				'flex items-center font-mono uppercase tracking-widest',
-				{
-					'text-xxs': size === 'sm',
-					'text-xs': size === 'md',
-					'text-sm': size === 'lg',
-				},
-				{
-					'justify-start': justify === 'start',
-					'justify-center': justify === 'center',
-					'justify-end': justify === 'end',
-					'justify-between': justify === 'between',
-					'justify-around': justify === 'around',
-				}
-			)}
-		/>
-	);
+	outline = false,
+	style,
+	buttonType = 'button',
+	...rest
+}: ButtonProps) => {
+	switch (type) {
+		case 'none':
+			return null;
+		default:
+			return (
+				<ConditionalLink
+					{...rest}
+					ariaLabel={ariaLabel}
+					className={cn(
+						'inline-block h-fit w-fit whitespace-nowrap text-2xl font-medium capitalize transition-all duration-300 hover:underline focus:underline',
+						className
+					)}
+					style={style}
+					href={href}
+					buttonType={buttonType}
+				>
+					{label}
+				</ConditionalLink>
+			);
+	}
 };
 
-export const IconButton: React.FC<
-	ButtonProps & React.HTMLAttributes<HTMLButtonElement>
-> = ({ size = 'md', children, ...props }) => {
-	return (
-		<>
-			<Button
-				{...props}
-				className={cn(props.className)}
-				children={
-					<>
-						<span
-							className={cn({
-								'h-2.5': size === 'sm',
-								'h-3': size === 'md',
-								'h-3.5': size === 'lg',
-							})}
-						>
-							{children}
-						</span>
-						<Icon
-							className={cn({
-								'w-5 h-5': size === 'sm',
-								'w-6 h-6': size === 'md',
-								'w-7 h-7': size === 'lg',
-							})}
-							name="arrow-right"
-						/>
-					</>
-				}
-			/>
-		</>
-	);
+export const ConditionalLink = ({
+	href,
+	className,
+	ariaLabel,
+	children,
+	style,
+	buttonType,
+	...rest
+}: Partial<
+	ButtonProps & { children: string | React.ReactNode }
+>): React.ReactElement => {
+	const isExternal = href && href.startsWith('http');
+	const isAnchor = href && href.startsWith('#');
+
+	if (isExternal) {
+		return (
+			<a
+				aria-label={ariaLabel}
+				className={className}
+				href={href}
+				rel="noreferrer"
+				target="_blank"
+				type={buttonType}
+			>
+				{children}
+			</a>
+		);
+	} else if (isAnchor) {
+		return (
+			// @ts-ignore - type being dumb
+			<button
+				className={className}
+				style={style}
+				{...rest}
+				onClick={(e) => {
+					e.preventDefault();
+					const target = document.querySelector(href);
+					if (target instanceof HTMLElement) {
+						target.scrollIntoView({ behavior: 'smooth' });
+					}
+				}}
+			>
+				{children}
+			</button>
+		);
+	} else if (href) {
+		return (
+			<Link
+				aria-label={ariaLabel}
+				className={className}
+				href={href}
+				type={buttonType}
+			>
+				{children}
+			</Link>
+		);
+	} else if (buttonType) {
+		return (
+			// @ts-ignore - type being dumb
+			<button className={className} style={style} type={buttonType} {...rest}>
+				{children}
+			</button>
+		);
+	} else {
+		return <>{children}</>;
+	}
 };

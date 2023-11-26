@@ -79,6 +79,7 @@ export type TextCtaSection = Section & {
 export type FeaturedProjectsSection = Section & {
 	projects?: any[];
 	projectClasses?: [];
+	hasFilter?: boolean;
 };
 
 export type DividerSection = Section & {
