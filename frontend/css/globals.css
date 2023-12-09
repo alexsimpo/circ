@@ -6,3 +6,8 @@
 @import './images.css';
 @import './text.css';
 @import './swiper.css';
+
+.h-screen {
+	height: 100vh;
+	height: 100svh;
+}

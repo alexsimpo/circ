@@ -1,4 +1,4 @@
-// schemas/link.js
+import {defineType, defineField} from 'sanity'
 
 interface Link {
   title: string
@@ -6,27 +6,27 @@ interface Link {
   slug: string
 }
 
-export default {
+export default defineType({
   name: 'link',
   type: 'object',
   title: 'Link',
   fields: [
-    {
+    defineField({
       name: 'url',
       type: 'string',
       title: 'URL',
-    },
-    {
+    }),
+    defineField({
       name: 'reference',
       type: 'reference',
       title: 'Reference',
       to: [{type: 'page'}, {type: 'project'}],
-    },
-    {
+    }),
+    defineField({
       name: 'label',
       type: 'string',
       title: 'Label',
-    },
+    }),
   ],
   preview: {
     select: {
@@ -41,4 +41,4 @@ export default {
       }
     },
   },
-}
+})

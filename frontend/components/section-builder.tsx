@@ -4,6 +4,8 @@ import { FeaturedProjects } from './section/projects';
 import { Divider } from './section/divider';
 import { Cards } from './section/cards';
 import { AllSections } from 'types';
+import { Accordion } from './section/accordion';
+import { Awards } from './section/awards';
 
 export const SectionBuilder = ({ content }: { content: AllSections[] }) => {
 	if (!content) return;
@@ -19,6 +21,10 @@ export const SectionBuilder = ({ content }: { content: AllSections[] }) => {
 				return <FeaturedProjects key={index} {...section} />;
 			case 'cards':
 				return <Cards key={index} {...section} />;
+			case 'accordion':
+				return <Accordion key={index} {...section} />;
+			case 'awards':
+				return <Awards key={index} {...section} />;
 			default:
 				return <section key={index}>default</section>;
 		}

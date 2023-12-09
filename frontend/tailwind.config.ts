@@ -18,7 +18,7 @@ module.exports = {
 				md: '100%',
 				lg: '100%',
 				xl: '100%',
-				'2xl': '1496px',
+				'2xl': '1920px',
 			},
 		},
 		fontFamily: {
@@ -41,8 +41,8 @@ module.exports = {
 			'5xl': ['3rem', { lineHeight: '1.25' }],
 			'6xl': ['3.75rem', { lineHeight: '1.2' }],
 			'7xl': ['4.5rem', { lineHeight: '1.15' }],
-			'8xl': ['6rem', { lineHeight: '1.1' }],
-			'9xl': ['8rem', { lineHeight: '1.05' }],
+			'8xl': ['6.5rem', { lineHeight: '0.95' }],
+			'9xl': ['8rem', { lineHeight: '0.85' }],
 		},
 		extend: {
 			minHeight: {

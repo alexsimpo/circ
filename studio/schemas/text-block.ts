@@ -1,17 +1,18 @@
+import {defineType, defineField} from 'sanity'
 import {BlockquoteIcon} from '@sanity/icons'
 
-export default {
+export default defineType({
   name: 'text-block',
-  type: 'object',
   title: 'Text',
+  type: 'object',
   icon: BlockquoteIcon,
   fields: [
-    {
+    defineField({
       name: 'heading',
       type: 'string',
       title: 'Heading',
-    },
-    {
+    }),
+    defineField({
       name: 'content',
       type: 'array',
       title: 'Content',
@@ -22,23 +23,22 @@ export default {
           lists: [],
           marks: {
             annotations: [
-              {
+              defineField({
                 name: 'link',
                 type: 'object',
                 title: 'Link',
-                icon: () => '🔗',
                 fields: [
-                  {
+                  defineField({
                     name: 'link',
                     type: 'link',
                     title: 'Link',
-                  },
+                  }),
                 ],
-              },
+              }),
             ],
           },
         },
       ],
-    },
+    }),
   ],
-}
+})

@@ -16,17 +16,17 @@ export const Footer: React.FC<FooterProps> = ({
 	socialMenu,
 }) => {
 	return (
-		<footer className="border-t border-black font-medium text-2xl">
+		<footer className="border-t border-black text-2xl font-medium">
 			<div className="container">
-				<div className="flex flex-col sm:flex-row justify-between pb-6 pt-9 lg:pt-18 lg:pb-12">
+				<div className="lg:pt-18 flex flex-col justify-between pb-6 pt-9 sm:flex-row lg:pb-12">
 					<div className="w-1/2">
-						<div className="flex gap-4 items-center pb-4 md:pb-8">
+						<div className="flex items-center gap-4 pb-4 md:pb-8">
 							<Link href="/">Circ Design</Link>
 							<div>
 								<Logo />
 							</div>
 						</div>
-						<ul className="">
+						<ul className="pb-4 md:pb-0">
 							{footerMenu &&
 								footerMenu.map((link, i) => (
 									<li key={i} className="mr-6">
@@ -49,8 +49,8 @@ export const Footer: React.FC<FooterProps> = ({
 					</div>
 				</div>
 				<hr className="border-black" />
-				<div className="flex justify-between pt-6 pb-6 sm:pb-12 sm:pt-12">
-					<div className="sm:w-1/2">
+				<div className="flex flex-wrap justify-between gap-4 pb-6 pt-6 sm:pb-12 sm:pt-12">
+					<div>
 						<ul className="flex">
 							<li className="mr-6">&copy; Circ Design</li>
 							{copyrightMenu &&
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({
 								))}
 						</ul>
 					</div>
-					<div className="sm:w-1/2">
+					<div>
 						<ul className="flex justify-end">
 							{socialMenu &&
 								socialMenu.map((link, i) => (

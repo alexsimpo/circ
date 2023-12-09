@@ -9,10 +9,11 @@ import {
 	getTextSize,
 	getVerticalGridGutter,
 } from 'utils/sectionUtils';
+import { nl2br } from 'utils/stringUtils';
 
 const defaultDisplay: Partial<Display> = { gutter: 'lg' };
 
-export const Cards = ({
+export const Awards = ({
 	heading,
 	description,
 	items,
@@ -32,17 +33,10 @@ export const Cards = ({
 							{heading}
 						</h2>
 					)}
-					<div
-						className={cn(
-							'grid',
-							getHorizontalGridGutter(sectionDisplay.gutter),
-							getVerticalGridGutter(sectionDisplay.gutter),
-							getGridColumnSize(!useFullGrid && columns)
-						)}
-					>
+					<div className={cn()}>
 						{items.map((item, index) => {
 							const itemFields = { ...sectionDisplay, ...item };
-							return <Card key={index} {...itemFields} />;
+							return <Award key={index} {...itemFields} />;
 						})}
 					</div>
 				</div>
@@ -53,7 +47,7 @@ export const Cards = ({
 
 const defaultCardDisplay: Partial<Display> = {};
 
-const Card = ({
+const Award = ({
 	display,
 	image,
 	video,
@@ -64,19 +58,11 @@ const Card = ({
 	const itemDisplay = { ...defaultCardDisplay, ...display };
 
 	return (
-		<div className={cn('card', getGridColumnSpan(itemDisplay.columns))}>
-			<div className="flex flex-col">
-				{(image || video) && (
-					<Media
-						ratio="1"
-						className="h-full w-full"
-						imageSrc={image.url}
-						alt={image.alt}
-					/>
-				)}
-				<h3 className={cn('pt-4', getTextSize('2xl'))}>{heading}</h3>
-				<p className={cn('pt-2 leading-5', getTextSize('md'))}>{description}</p>
-			</div>
+		<div className="flex flex-col justify-between gap-4 border-b border-black py-6 last:border-b-0 md:flex-row">
+			<h3 className={cn('font-medium', getTextSize('2xl'))}>{heading}</h3>
+			<p className={cn('leading-10 md:text-right', getTextSize('2xl'))}>
+				{nl2br(description)}
+			</p>
 		</div>
 	);
 };

@@ -1,24 +1,35 @@
 import { getUrlFromLink } from 'utils/pageUtils';
-import { TextCtaSection } from 'types';
+import { Display, TextCtaSection } from 'types';
 import Link from 'next/link';
 import { RichText } from 'components/rich-text';
+import { cn } from 'utils/classNameUtils';
+import { getSectionalPadding } from 'utils/sectionUtils';
 
-export const TextCta: React.FC<TextCtaSection> = ({
+const defaultDisplay: Partial<Display> = {};
+
+export const TextCta = ({
 	heading,
 	byline,
 	link,
-}) => {
+	display,
+}: Partial<TextCtaSection>) => {
+	const sectionDisplay = { ...defaultDisplay, ...display };
 	return (
 		<section className="overflow-hidden">
 			<div className="container">
-				<div className="flex flex-col justify-center h-small-screen max-h-screen py-16 lg:py-32">
-					<div className="portable-text text-3xl font-medium lg:text-5xl md:w-3/4">
+				<div
+					className={cn(
+						'flex flex-col',
+						getSectionalPadding(sectionDisplay.padding)
+					)}
+				>
+					<div className="portable-text text-3xl font-medium md:w-3/4 lg:text-5xl">
 						<RichText value={heading} />
 					</div>
-					<div className="pt-8  md:pt-16 lg:pt-24 md:ml-auto md:w-1/2 lg:w-1/4">
+					<div className="pt-8  md:ml-auto md:w-1/2 md:pt-16 lg:w-1/4 lg:pt-24">
 						<p className="text-xl">{byline}</p>
 						{link && (
-							<div className="text-2xl pt-8 font-medium">
+							<div className="pt-8 text-2xl font-medium">
 								<Link
 									as="a"
 									className="hover:underline"

@@ -53,10 +53,26 @@ export type Video = {
 };
 
 export type Section = {
-	_type: 'cards' | 'featured-projects' | 'text-block' | 'text-cta' | 'divider';
+	_type:
+		| 'cards'
+		| 'featured-projects'
+		| 'text-block'
+		| 'text-cta'
+		| 'divider'
+		| 'accordion';
 	heading?: string;
 	description?: string;
 	link?: ItemLink;
+	width?: 'full' | 'contained';
+	display?: Display;
+};
+
+export type Display = {
+	_type: 'display';
+	theme?: 'light' | 'black';
+	padding?: 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+	columns?: '1' | '2' | '3' | '4' | '5' | '6';
+	gutter?: 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 };
 
 export type CardItem = {
@@ -66,6 +82,13 @@ export type CardItem = {
 	heading?: string;
 	description?: string;
 	link?: ItemLink;
+	display?: Display;
+};
+
+export type AccordionItem = {
+	_type: 'item';
+	heading?: string;
+	description?: string;
 };
 
 export type CardsSection = Section & {
@@ -83,11 +106,15 @@ export type FeaturedProjectsSection = Section & {
 };
 
 export type DividerSection = Section & {
-	theme?: 'light' | 'dark';
+	theme?: 'light' | 'black';
 };
 
 export type TextBlockSection = Section & {
 	text: string;
+};
+
+export type AccordionSection = Section & {
+	items: AccordionItem[];
 };
 
 export type AllSections =
@@ -95,4 +122,5 @@ export type AllSections =
 	| TextCtaSection
 	| FeaturedProjectsSection
 	| DividerSection
-	| TextBlockSection;
+	| TextBlockSection
+	| AccordionSection;

@@ -1,5 +1,9 @@
 export const getWidth = (width?: string) => {
 	switch (width) {
+		case 'full':
+			return 'w-full';
+		case 'contained':
+			return 'container';
 		case 'xxl':
 			return 'max-w-7xl';
 		case 'xl':
@@ -162,23 +166,23 @@ export const getTextSize = (fontSize: string) => {
 	switch (fontSize) {
 		case 'xxs':
 		case '2xs':
-			return 'text-[0.5rem] md:text-xs';
+			return 'text-xs';
 		case 'xs':
-			return 'text-2xs md:text-xs';
+			return 'text-xs';
 		case 'sm':
 		case 's':
-			return 'text-xs md:text-sm';
+			return 'text-sm';
 		case 'm':
 		case 'md':
-			return 'text-sm md:text-base';
+			return 'text-base';
 		case 'l':
 		case 'lg':
-			return 'text-md md:text-lg';
+			return 'text-lg';
 		case 'xl':
-			return 'text-lg md:text-xl';
+			return 'text-xl';
 		case 'xxl':
 		case '2xl':
-			return 'text-[19px] md:text-2xl';
+			return 'text-2xl';
 		case '3xl':
 			return 'text-[1.25rem] md:text-[1.75rem] lg:text-3xl';
 		case '4xl':
@@ -190,11 +194,9 @@ export const getTextSize = (fontSize: string) => {
 		case '7xl':
 			return 'text-[2.25rem] leading-[1.15] md:text-[3.5rem] lg:text-7xl';
 		case '8xl':
-			return 'text-[2.5rem] leading-[1.1] md:text-[4.25rem] lg:text-8xl';
+			return 'text-[2.5rem] leading-[1.1] md:leading-[1] md:text-[4.25rem] lg:text-8xl';
 		case '9xl':
 			return 'text-[3rem] leading-[1.1] md:text-[4.75rem] lg:text-9xl';
-		case 'stat':
-			return 'text-[8rem] leading-[0.85] md:text-[10rem] lg:text-[14.25rem]';
 		default:
 			return '';
 	}
@@ -226,6 +228,31 @@ export const getImageWidthFromColumns = (columns?: string) => {
 	}
 };
 
+export const getGridColumnSize = (columns?: string | number) => {
+	switch (columns) {
+		case '1':
+		case 1:
+			return 'grid-cols-1';
+		case '2':
+		case 2:
+			return 'grid-cols-1 md:grid-cols-2';
+		case '3':
+		case 3:
+			return 'grid-cols-1 md:grid-cols-3';
+		case '4':
+		case 4:
+			return 'grid-cols-2 md:grid-cols-4';
+		case '5':
+		case 5:
+			return 'grid-cols-2 md:grid-cols-5';
+		case '6':
+		case 6:
+			return 'grid-cols-2 md:grid-cols-6';
+		default:
+			return 'grid-cols-12';
+	}
+};
+
 export const getGridColumnSpan = (columns?: string) => {
 	switch (columns) {
 		case '1':
@@ -251,8 +278,9 @@ export const getGridColumnSpan = (columns?: string) => {
 		case '11':
 			return 'col-span-12 md:col-span-11';
 		case '12':
-		default:
 			return 'col-span-12';
+		default:
+			return 'col-span-1';
 	}
 };
 
@@ -357,8 +385,6 @@ export const getBorderColor = (color?: string) => {
 			return 'border-black';
 		case 'white':
 			return 'border-white';
-		case 'grey':
-			return 'border-grey';
 		case 'green':
 			return 'border-green';
 		case 'blue':
@@ -367,8 +393,9 @@ export const getBorderColor = (color?: string) => {
 			return 'border-orange';
 		case 'transparent':
 			return 'border-transparent';
+		case 'grey':
 		default:
-			return '';
+			return 'border-light-200';
 	}
 };
 
@@ -376,19 +403,24 @@ export const getHorizontalGridGutter = (gutter?: string) => {
 	switch (gutter) {
 		case 'none':
 			return 'gap-0';
+		case '2xs':
 		case 'xxs':
 			return 'gap-x-1  md:gap-x-1.5 lg:gap-x-2';
 		case 'xs':
 			return 'gap-x-2  md:gap-x-3 lg:gap-x-4';
 		default:
 		case 's':
+		case 'sm':
 			return 'gap-x-3  md:gap-x-4 lg:gap-x-6';
+		case 'md':
 		case 'm':
 			return 'gap-x-4  md:gap-x-6 lg:gap-x-8';
 		case 'l':
+		case 'lg':
 			return 'gap-x-5 0 md:gap-x-8 lg:gap-x-12';
 		case 'xl':
 			return 'gap-x-6 2 md:gap-x-11 lg:gap-x-16';
+		case '2xl':
 		case 'xxl':
 			return 'gap-x-7 4 md:gap-x-16 lg:gap-x-24';
 	}
@@ -398,20 +430,25 @@ export const getVerticalGridGutter = (gutter?: string) => {
 	switch (gutter) {
 		case 'none':
 			return 'gap-0';
+		case '2xs':
 		case 'xxs':
 			return 'gap-y-2 md:gap-y-3 lg:gap-y-4';
 		case 'xs':
 			return 'gap-y-4 md:gap-y-6 lg:gap-y-8';
 		default:
 		case 's':
+		case 'sm':
 			return 'gap-y-6 md:gap-y-8 lg:gap-y-12';
 		case 'm':
+		case 'md':
 			return 'gap-y-8 md:gap-y-12 lg:gap-y-16';
 		case 'l':
+		case 'lg':
 			return 'gap-y-10 md:gap-y-16 lg:gap-y-24';
 		case 'xl':
 			return 'gap-y-12 md:gap-y-22 lg:gap-y-32';
 		case 'xxl':
+		case '2xl':
 			return 'gap-y-14 md:gap-y-32 lg:gap-y-48';
 	}
 };
@@ -641,5 +678,27 @@ export const getMediaWidth = (width?: string) => {
 			return 'w-64';
 		default:
 			return '';
+	}
+};
+
+export const getSectionalPadding = (padding?: string) => {
+	switch (padding) {
+		case 'none':
+			return 'p-0';
+		case 'xxs':
+			return 'py-2 md:py-4';
+		case 'xs':
+			return 'py-4 md:py-8';
+		case 's':
+			return 'py-6 md:py-12';
+		case 'm':
+			return 'py-8 md:py-16';
+		case 'l':
+			return 'py-10 md:py-20';
+		case 'xl':
+			return 'py-12 md:py-24';
+		case 'xxl':
+		default:
+			return 'py-14 md:py-28';
 	}
 };

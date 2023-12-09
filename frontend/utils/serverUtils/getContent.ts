@@ -36,7 +36,7 @@ export default async (type: string, slug: string) => {
 					_id,
 					url
 				}
-			}
+			},
 		},
 	}`,
 		{ type, slug }

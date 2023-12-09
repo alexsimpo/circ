@@ -1,3 +1,4 @@
+import {defineArrayMember, defineField} from 'sanity'
 import seo from './seo'
 
 export default {
@@ -118,19 +119,19 @@ export default {
         },
       ],
     },
-    {
+    defineField({
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
       group: 'content',
       of: [
-        {type: 'text-cta'},
-        {type: 'featured-projects'},
-        {type: 'divider'},
-        {type: 'text-block'},
-        {type: 'cards'},
+        defineArrayMember({name: 'text-cta', type: 'text-cta'}),
+        defineArrayMember({name: 'featured-projects', type: 'featured-projects'}),
+        defineArrayMember({name: 'divider', type: 'divider'}),
+        defineArrayMember({name: 'text-block', type: 'text-block'}),
+        defineArrayMember({name: 'cards', type: 'cards'}),
       ],
-    },
+    }),
     seo,
   ],
 }

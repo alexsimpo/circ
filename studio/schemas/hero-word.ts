@@ -1,24 +1,19 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'media',
-  title: 'Media',
+  name: 'hero-word',
   type: 'object',
-  options: {
-    collapsible: false,
-    collapsed: false,
-    columns: 2,
-  },
+  title: 'Hero Word',
   fields: [
+    defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+    }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
-    }),
-    defineField({
-      name: 'video',
-      title: 'Video',
-      type: 'file',
     }),
   ],
 })

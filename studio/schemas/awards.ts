@@ -1,12 +1,12 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
-import {InlineIcon} from '@sanity/icons'
-import display, {columns} from './display'
+import {OkHandIcon} from '@sanity/icons'
+import display from './display'
 
 export default defineType({
-  name: 'cards',
+  name: 'awards',
   type: 'object',
-  title: 'Cards',
-  icon: InlineIcon,
+  title: 'Awards',
+  icon: OkHandIcon,
   groups: [
     {
       name: 'display',
@@ -20,11 +20,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-    }),
-    defineField({
       name: 'items',
       type: 'array',
       title: 'Items',
@@ -35,11 +30,6 @@ export default defineType({
           title: 'Card Item',
           fields: [
             defineField({
-              name: 'media',
-              type: 'media',
-              title: 'Media',
-            }),
-            defineField({
               name: 'heading',
               title: 'Heading',
               type: 'string',
@@ -48,11 +38,6 @@ export default defineType({
               name: 'description',
               title: 'Description',
               type: 'text',
-            }),
-            defineField({
-              name: 'link',
-              type: 'link',
-              title: 'Link',
             }),
           ],
         }),
