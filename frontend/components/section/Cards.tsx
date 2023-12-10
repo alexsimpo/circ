@@ -41,7 +41,7 @@ export const Cards = ({
 						)}
 					>
 						{items.map((item, index) => {
-							const itemFields = { ...sectionDisplay, ...item };
+							const itemFields = { display: sectionDisplay, ...item };
 							return <Card key={index} {...itemFields} />;
 						})}
 					</div>
@@ -62,7 +62,7 @@ const Card = ({
 	...props
 }: Partial<CardItem>) => {
 	const itemDisplay = { ...defaultCardDisplay, ...display };
-
+	console.log('itemDisplay', itemDisplay);
 	return (
 		<div className={cn('card', getGridColumnSpan(itemDisplay.columns))}>
 			<div className="flex flex-col">

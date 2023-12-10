@@ -4,6 +4,10 @@ export default async (type: string, slug: string) => {
 	const page = await client.fetch(
 		`*[_type == $type && slug.current == $slug][0] {
 			title,
+			categories[]->{
+				title,
+				color
+			},
 			header {
 				heading,
 				description,
@@ -21,6 +25,15 @@ export default async (type: string, slug: string) => {
 					},
 				}	
 			},
+			details {
+				year,
+				location,
+				description,
+				credits[] {
+					name,
+					role
+				}
+			}
 		}`,
 		{ type, slug }
 	);

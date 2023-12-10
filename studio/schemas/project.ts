@@ -25,20 +25,6 @@ export default {
       group: 'content',
     },
     {
-      name: 'display_title',
-      title: 'Display Title',
-      type: 'string',
-      description: 'The title of the page to display in the header',
-      group: 'content',
-    },
-    {
-      name: 'subtitle',
-      title: 'Subtitle',
-      type: 'text',
-      description: 'The subtitle of the page',
-      group: 'content',
-    },
-    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
@@ -50,6 +36,19 @@ export default {
       },
       validation: (Rule: any) => Rule.required(),
     },
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      group: 'content',
+      of: [
+        {
+          type: 'reference',
+          weak: true,
+          to: [{type: 'category'}],
+        },
+      ],
+    }),
     {
       name: 'header',
       title: 'Header Section',
@@ -59,6 +58,11 @@ export default {
         collapsible: true,
       },
       fields: [
+        {
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+        },
         {
           name: 'media',
           title: 'Media',
@@ -103,19 +107,32 @@ export default {
           type: 'string',
         },
         {
-          name: 'scope',
-          title: 'Scope',
-          type: 'string',
+          name: 'description',
+          title: 'Description',
+          type: 'text',
         },
         {
           name: 'credits',
           title: 'Credits',
-          type: 'text',
-        },
-        {
-          name: 'description',
-          title: 'Description',
-          type: 'text',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              name: 'credit',
+              fields: [
+                {
+                  name: 'role',
+                  title: 'Role',
+                  type: 'string',
+                },
+                {
+                  name: 'name',
+                  title: 'Name',
+                  type: 'text',
+                },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -126,7 +143,6 @@ export default {
       group: 'content',
       of: [
         defineArrayMember({name: 'text-cta', type: 'text-cta'}),
-        defineArrayMember({name: 'featured-projects', type: 'featured-projects'}),
         defineArrayMember({name: 'divider', type: 'divider'}),
         defineArrayMember({name: 'text-block', type: 'text-block'}),
         defineArrayMember({name: 'cards', type: 'cards'}),

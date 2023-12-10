@@ -685,18 +685,23 @@ export const getSectionalPadding = (padding?: string) => {
 	switch (padding) {
 		case 'none':
 			return 'p-0';
+		case '2xs':
 		case 'xxs':
 			return 'py-2 md:py-4';
 		case 'xs':
 			return 'py-4 md:py-8';
+		case 'sm':
 		case 's':
 			return 'py-6 md:py-12';
+		case 'md':
 		case 'm':
 			return 'py-8 md:py-16';
+		case 'lg':
 		case 'l':
 			return 'py-10 md:py-20';
 		case 'xl':
 			return 'py-12 md:py-24';
+		case '2xl':
 		case 'xxl':
 		default:
 			return 'py-14 md:py-28';

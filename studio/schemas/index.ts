@@ -2,6 +2,7 @@
 import project from './project'
 import {pageType} from './page'
 import menu from './menu'
+import {category} from './category'
 
 // Objects
 import link from './link'
@@ -22,6 +23,7 @@ export const schemaTypes = [
   pageType,
   project,
   menu,
+  category,
   //   Objects
   link,
   media,

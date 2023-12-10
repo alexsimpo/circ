@@ -11,3 +11,10 @@
 	height: 100vh;
 	height: 100svh;
 }
+
+@media (min-width: 1024px) {
+	.container {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}

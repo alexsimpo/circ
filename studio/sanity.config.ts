@@ -3,6 +3,7 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {MenuIcon} from '@sanity/icons'
+import {simplerColorInput} from 'sanity-plugin-simpler-color-input'
 
 export default defineConfig({
   name: 'default',
@@ -27,6 +28,7 @@ export default defineConfig({
           ]),
     }),
     visionTool(),
+    simplerColorInput(),
   ],
 
   schema: {

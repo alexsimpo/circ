@@ -18,12 +18,7 @@ export const Header = ({ className, headerMenu }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<header
-			className={cn(
-				'pointer-events-none sticky top-0 z-50 pb-8 md:pb-16',
-				className
-			)}
-		>
+		<header className={cn('pointer-events-none sticky top-0 z-50', className)}>
 			<div className="container pointer-events-auto">
 				<div
 					className={cn(

@@ -18,7 +18,7 @@ module.exports = {
 				md: '100%',
 				lg: '100%',
 				xl: '100%',
-				'2xl': '1920px',
+				'2xl': '1620px',
 			},
 		},
 		fontFamily: {

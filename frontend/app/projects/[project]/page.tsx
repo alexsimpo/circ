@@ -1,15 +1,12 @@
 // import { getPage } from '@/utils/serverUtils';
 import { SectionBuilder } from 'components/section-builder';
-import { HeroHome } from 'components/layout/hero-home';
 import { Metadata, ResolvingMetadata } from 'next';
-import { getUrlFromStaticProps } from 'utils/pageUtils';
 import getContent from 'utils/serverUtils/getContent';
 import getPageHeader from 'utils/serverUtils/getPageHeader';
-import { Divider } from 'components/section/divider';
-import { HeroDefault } from 'components/layout/hero-default';
+import { HeroProject } from 'components/layout/hero-project';
 
 type PageProps = {
-	params: { slug?: string[] };
+	params: { project?: string[] };
 };
 
 export async function generateMetadata(
@@ -29,13 +26,19 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: PageProps) {
-	const slug = params.slug.join('/');
-	const page = await getPageHeader('page', slug);
-	const content = await getContent('page', slug);
-
+	const slug = params.project;
+	const page = await getPageHeader('project', slug);
+	const content = await getContent('project', slug);
+	console.log(page);
 	return (
 		<>
-			{page && page.header && <HeroDefault {...page.header} />}
+			{page && page.header && (
+				<HeroProject
+					{...page.header}
+					categories={page.categories}
+					details={page.details}
+				/>
+			)}
 			{content && <SectionBuilder content={content.pageBuilder} />}
 		</>
 	);

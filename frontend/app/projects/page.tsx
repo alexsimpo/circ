@@ -1,9 +1,4 @@
 // import { getPage } from '@/utils/serverUtils';
-import { SectionBuilder } from 'components/section-builder';
-import { HeroText } from 'components/layout/hero-home';
-import { Metadata, ResolvingMetadata } from 'next';
-import { getUrlFromStaticProps } from 'utils/pageUtils';
-import getContent from 'utils/serverUtils/getContent';
 import getProjects from 'utils/serverUtils/getProjects';
 import { FeaturedProjects } from 'components/section/projects';
 
@@ -23,7 +18,6 @@ export async function generateMetadata(
 }
 
 export default async function Page() {
-	const page = await getContent('page', 'projects');
 	const projects = await getProjects();
 
 	return (
