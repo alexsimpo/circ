@@ -21,20 +21,6 @@ interface ProjectCard {
 	index?: number;
 }
 
-const categories = [
-	{
-		slug: 'urban-design',
-		color: 'grey',
-	},
-	{
-		slug: 'architecture',
-		color: 'green',
-	},
-	{
-		slug: 'landscape-design',
-	},
-];
-
 const defaultProjectClasses: ProjectCard[] = [
 	{
 		project: {
@@ -128,8 +114,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsSection> = ({
 };
 
 const ProjectCard: React.FC<ProjectCard> = ({ project, className, index }) => {
-	const category = categories[index % 2];
-
+	console.log('project', project);
 	return (
 		<div className={cn(className, 'group flex flex-col')}>
 			<ConditionalLink href={`projects/${project.slug}`}>
@@ -144,18 +129,14 @@ const ProjectCard: React.FC<ProjectCard> = ({ project, className, index }) => {
 					</ConditionalLink>
 				</h3>
 				<div className="flex items-center gap-2">
-					{/* {categories.map((category, index) => <ConditionalLink key={`${category.slug}-${index}`} href={`projects/${category.slug}`}><div className={cn('rounded-full h-5 w-5', getBackgroundColor(category.color))} /></ConditionalLink>)} */}
-					<ConditionalLink
-						key={`${category.slug}-${index}`}
-						href={`projects/${category.slug}`}
-					>
-						<div
-							className={cn(
-								'h-5 w-5 rounded-full',
-								getBackgroundColor(category.color)
-							)}
-						/>
-					</ConditionalLink>
+					{project.categories &&
+						project.categories.map((category, index) => (
+							<div
+								key={`${category.title}-${index}`}
+								className={cn('h-5 w-5 rounded-full')}
+								style={{ background: category.color.value }}
+							/>
+						))}
 				</div>
 			</div>
 		</div>

@@ -20,7 +20,12 @@ export default async (type: string, slug: string) => {
 					alt,
 					_id,
 					url
-				}
+				},
+				categories[]->{
+					title,
+					color
+				},
+				mediaRatio,
 			},
 			"items": items[] {
 				heading,
@@ -35,7 +40,8 @@ export default async (type: string, slug: string) => {
 					alt,
 					_id,
 					url
-				}
+				},
+				mediaRatio,
 			},
 		},
 	}`,

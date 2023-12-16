@@ -14,6 +14,13 @@ export const columns = [
   {title: '6', value: '2'},
 ]
 
+export const mediaRatio = [
+  {title: '1:1', value: '1'},
+  {title: '4:3', value: '4/3'},
+  {title: '16:9', value: '16/9'},
+  {title: '3:2', value: '3/2'},
+]
+
 export default {
   name: 'display',
   type: 'object',

@@ -18,7 +18,12 @@ export const Header = ({ className, headerMenu }: HeaderProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<header className={cn('pointer-events-none sticky top-0 z-50', className)}>
+		<header
+			className={cn(
+				'pointer-events-none sticky top-0 z-50 bg-white',
+				className
+			)}
+		>
 			<div className="container pointer-events-auto">
 				<div
 					className={cn(
@@ -26,7 +31,7 @@ export const Header = ({ className, headerMenu }: HeaderProps) => {
 						getTextSize('2xl')
 					)}
 				>
-					<div className="w-fit sm:w-1/4">
+					<div className="w-fit hover:underline sm:w-1/4">
 						<Link href="/">Circ Design</Link>
 					</div>
 					<div className="h-[18px] w-fit sm:w-1/4">

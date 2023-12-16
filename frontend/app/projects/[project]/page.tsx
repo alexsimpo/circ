@@ -4,9 +4,10 @@ import { Metadata, ResolvingMetadata } from 'next';
 import getContent from 'utils/serverUtils/getContent';
 import getPageHeader from 'utils/serverUtils/getPageHeader';
 import { HeroProject } from 'components/layout/hero-project';
+import { ProjectCredits } from 'components/layout/project-credits';
 
 type PageProps = {
-	params: { project?: string[] };
+	params: { project?: string };
 };
 
 export async function generateMetadata(
@@ -29,7 +30,7 @@ export default async function Page({ params }: PageProps) {
 	const slug = params.project;
 	const page = await getPageHeader('project', slug);
 	const content = await getContent('project', slug);
-	console.log(page);
+
 	return (
 		<>
 			{page && page.header && (
@@ -40,6 +41,9 @@ export default async function Page({ params }: PageProps) {
 				/>
 			)}
 			{content && <SectionBuilder content={content.pageBuilder} />}
+			{page.details?.credits && (
+				<ProjectCredits credits={page.details.credits} />
+			)}
 		</>
 	);
 }

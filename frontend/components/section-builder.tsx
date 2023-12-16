@@ -6,13 +6,14 @@ import { Cards } from './section/cards';
 import { AllSections } from 'types';
 import { Accordion } from './section/accordion';
 import { Awards } from './section/awards';
+import { TextBlock } from './section/text-block';
 
 export const SectionBuilder = ({ content }: { content: AllSections[] }) => {
 	if (!content) return;
 	return content.map((section, index) => {
 		switch (section._type) {
 			case 'text-block':
-				return <section key={index}>rich text</section>;
+				return <TextBlock key={index} {...section} />;
 			case 'text-cta':
 				return <TextCta key={index} {...section} />;
 			case 'divider':

@@ -1,6 +1,6 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 import {InlineIcon} from '@sanity/icons'
-import display, {columns} from './display'
+import display, {mediaRatio} from './display'
 
 export default defineType({
   name: 'cards',
@@ -53,6 +53,15 @@ export default defineType({
               name: 'link',
               type: 'link',
               title: 'Link',
+            }),
+            defineField({
+              name: 'mediaRatio',
+              title: 'Media Ratio',
+              type: 'string',
+              options: {
+                list: mediaRatio,
+                layout: 'dropdown',
+              },
             }),
           ],
         }),

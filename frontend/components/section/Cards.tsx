@@ -59,6 +59,7 @@ const Card = ({
 	video,
 	heading,
 	description,
+	mediaRatio,
 	...props
 }: Partial<CardItem>) => {
 	const itemDisplay = { ...defaultCardDisplay, ...display };
@@ -68,7 +69,7 @@ const Card = ({
 			<div className="flex flex-col">
 				{(image || video) && (
 					<Media
-						ratio="1"
+						ratio={mediaRatio || '1'}
 						className="h-full w-full"
 						imageSrc={image.url}
 						alt={image.alt}

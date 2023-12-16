@@ -1,4 +1,7 @@
+'use client';
+
 import { Media } from 'components/media/media';
+import { useInView } from 'react-intersection-observer';
 import { cn } from 'utils/classNameUtils';
 import { getSectionalPadding, getTextSize } from 'utils/sectionUtils';
 
@@ -46,26 +49,37 @@ const HeadingText = ({
 }) => {
 	const headingArray = heading.split(' ');
 
+	const { ref: wordRef, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0,
+		delay: 100,
+	});
+
 	return (
 		<>
 			{headingArray.map((word, index) => (
-				<h2
-					key={index}
-					className={cn(
-						getTextSize('8xl'),
-						image &&
-							'flex items-center gap-x-2 break-words underline decoration-2 underline-offset-4 md:gap-x-4 md:decoration-4 md:underline-offset-8 lg:decoration-[6px]'
-					)}
-				>
-					{image && index === 0 && (
-						<Media
-							className="h-8 w-8 md:h-16 md:w-16 lg:h-24 lg:w-24"
-							ratio="1"
-							imageSrc={image.url}
-						/>
-					)}
-					{word}
-				</h2>
+				<div key={index} className="-mb-3 overflow-hidden pb-3">
+					<h2
+						ref={wordRef}
+						className={cn(
+							'leading-[0.8] transition-all duration-1000 ease-in-out',
+							getTextSize('8xl'),
+							inView ? 'translate-y-0 rotate-0' : 'translate-y-full',
+							image &&
+								'flex items-end gap-x-2 break-words underline decoration-2 underline-offset-4 md:gap-x-4 md:decoration-4 md:underline-offset-8 lg:decoration-[6px]'
+						)}
+					>
+						{image && index === 0 && (
+							<Media
+								hideTransition
+								className="-mb-1 h-8 w-8 md:h-16 md:w-16 lg:h-[5.5rem] lg:w-[5.5rem]"
+								ratio="1"
+								imageSrc={image.url}
+							/>
+						)}
+						{word}
+					</h2>
+				</div>
 			))}
 		</>
 	);

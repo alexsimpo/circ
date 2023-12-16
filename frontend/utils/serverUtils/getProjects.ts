@@ -6,8 +6,16 @@ export default async () => {
 			title,
 			'slug': slug.current,
 			'description': subtitle,
+			categories[]->{
+				title,
+				color
+			},
 			details {
-				...
+				...,
+				credits[] {
+					role,
+					name,
+				}
 			},
 			'image': header.media.image.asset->{
 				alt,

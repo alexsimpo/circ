@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 import { cn } from 'utils/classNameUtils';
 
 interface MediaProps {
@@ -30,6 +33,7 @@ interface MediaProps {
 	imageSrc?: string;
 	alt?: string;
 	fill?: boolean;
+	hideTransition?: boolean;
 }
 
 export const Media: React.FC<MediaProps> = ({
@@ -44,16 +48,25 @@ export const Media: React.FC<MediaProps> = ({
 	videoSrc = video && video.url,
 	imageSrc = image && image.url,
 	alt,
+	hideTransition = false,
 	...props
 }) => {
+	const { ref: mediaRef, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.3,
+		delay: 100,
+	});
+
 	if (!videoSrc && !imageSrc) return;
 
 	return (
 		<figure
+			ref={mediaRef}
 			className={cn(
 				className,
-				'overflow-hidden transition-all',
+				'overflow-hidden transition-all duration-700',
 				fill ? 'absolute inset-0 h-full w-full' : 'relative',
+				!hideTransition && !inView ? 'opacity-0' : 'opacity-100',
 				{
 					'aspect-1/1': ratio === '1',
 					'aspect-16/9': ratio === '16/9',

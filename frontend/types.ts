@@ -111,6 +111,7 @@ export type DividerSection = Section & {
 
 export type TextBlockSection = Section & {
 	text: string;
+	content?: string;
 };
 
 export type AccordionSection = Section & {

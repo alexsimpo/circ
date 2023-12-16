@@ -6,7 +6,9 @@ interface HeroProps {
 	heading: string;
 	categories: {
 		title: string;
-		color?: string;
+		color?: {
+			value: string;
+		};
 	}[];
 	details: {
 		year: string;
@@ -80,15 +82,15 @@ export const HeroProject = ({
 				>
 					<div className={cn('col-span-2 flex flex-col md:col-span-1')}>
 						<h3 className="font-medium">Year</h3>
-						<p>{details.year}</p>
+						<p>{details?.year}</p>
 					</div>
 					<div className={cn('col-span-2 flex flex-col md:col-span-1')}>
 						<h3 className="font-medium">Location</h3>
-						<p>{details.location}</p>
+						<p>{details?.location}</p>
 					</div>
 					<div className="col-span-4 flex flex-col gap-4 md:col-span-2">
 						<h3 className="font-medium">About</h3>
-						<p className={cn(getTextSize('xl'))}>{details.description}</p>
+						<p className={cn(getTextSize('xl'))}>{details?.description}</p>
 					</div>
 				</div>
 			</div>
