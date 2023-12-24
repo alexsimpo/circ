@@ -1,12 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { Menu } from 'types';
-import { cn } from 'utils/classNameUtils';
-import { getUrlFromLink } from 'utils/pageUtils';
+import { cn } from '../../utils/classNameUtils';
+import { getUrlFromLink } from '../../utils/pageUtils';
 import Logo from 'images/logo.svg';
-import { MenuSVG } from 'components/svg/menu';
-import { getTextSize } from 'utils/sectionUtils';
-import { CloseSVG } from 'components/svg/close';
+import { MenuSVG } from '../../components/svg/menu';
+import { getTextSize } from '../../utils/sectionUtils';
+import { CloseSVG } from '../svg/close';
 import { useState } from 'react';
 
 interface HeaderProps {

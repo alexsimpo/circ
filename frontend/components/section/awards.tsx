@@ -1,15 +1,7 @@
-import { Media } from 'components/media/media';
-import { CardItem, CardsSection, Display, Section } from 'types';
-import { cn } from 'utils/classNameUtils';
-import {
-	getGridColumnSize,
-	getGridColumnSpan,
-	getHorizontalGridGutter,
-	getSectionalPadding,
-	getTextSize,
-	getVerticalGridGutter,
-} from 'utils/sectionUtils';
-import { nl2br } from 'utils/stringUtils';
+import { CardItem, CardsSection, Display } from '../../types';
+import { cn } from '../../utils/classNameUtils';
+import { getSectionalPadding, getTextSize } from '../../utils/sectionUtils';
+import { nl2br } from '../../utils/stringUtils';
 
 const defaultDisplay: Partial<Display> = { gutter: 'lg' };
 

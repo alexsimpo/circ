@@ -1,7 +1,7 @@
-import { RichText } from 'components/rich-text';
-import { Display, TextBlockSection } from 'types';
-import { cn } from 'utils/classNameUtils';
-import { getSectionalPadding, getTextSize } from 'utils/sectionUtils';
+import { RichText } from '../rich-text';
+import { Display, TextBlockSection } from '../../types';
+import { cn } from '../../utils/classNameUtils';
+import { getSectionalPadding, getTextSize } from '../../utils/sectionUtils';
 
 const defaultDisplay: Partial<Display> = {};
 

@@ -1,6 +1,6 @@
-import { Media } from 'components/media/media';
-import { cn } from 'utils/classNameUtils';
-import { getSectionalPadding, getTextSize } from 'utils/sectionUtils';
+import { Media } from '../../components/media/media';
+import { cn } from '../../utils/classNameUtils';
+import { getSectionalPadding, getTextSize } from '../../utils/sectionUtils';
 
 interface HeroProps {
 	heading: string;

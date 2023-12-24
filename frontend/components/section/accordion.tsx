@@ -1,12 +1,9 @@
 'use client';
-import { Media } from 'components/media/media';
-import { RichText } from 'components/rich-text';
-import { MinusSVG } from 'components/svg/minus';
-import { PlusSVG } from 'components/svg/plus';
+import { RichText } from '../rich-text';
 import { useEffect, useRef, useState } from 'react';
-import { AccordionSection } from 'types';
-import { cn } from 'utils/classNameUtils';
-import { getSectionalPadding, getTextSize } from 'utils/sectionUtils';
+import { AccordionSection } from '../../types';
+import { cn } from '../../utils/classNameUtils';
+import { getSectionalPadding, getTextSize } from '../../utils/sectionUtils';
 
 export const Accordion: React.FC<AccordionSection> = ({
 	heading,

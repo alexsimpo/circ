@@ -1,4 +1,4 @@
-import { cn } from 'utils/classNameUtils';
+import { cn } from '../../utils/classNameUtils';
 import Link from 'next/link';
 
 interface ButtonProps {

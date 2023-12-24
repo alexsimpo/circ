@@ -1,9 +1,9 @@
 'use client';
 
-import { Media } from 'components/media/media';
+import { Media } from '../media/media';
 import { useInView } from 'react-intersection-observer';
-import { cn } from 'utils/classNameUtils';
-import { getSectionalPadding, getTextSize } from 'utils/sectionUtils';
+import { cn } from '../../utils/classNameUtils';
+import { getSectionalPadding, getTextSize } from '../../utils/sectionUtils';
 
 interface HeroHomeProps {
 	items: {

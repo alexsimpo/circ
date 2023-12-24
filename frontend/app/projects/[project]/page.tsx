@@ -1,10 +1,9 @@
-// import { getPage } from '@/utils/serverUtils';
-import { SectionBuilder } from 'components/section-builder';
+import { SectionBuilder } from '../../../components/section-builder';
 import { Metadata, ResolvingMetadata } from 'next';
-import getContent from 'utils/serverUtils/getContent';
-import getPageHeader from 'utils/serverUtils/getPageHeader';
-import { HeroProject } from 'components/layout/hero-project';
-import { ProjectCredits } from 'components/layout/project-credits';
+import getContent from '../../../utils/serverUtils/getContent';
+import getPageHeader from '../../../utils/serverUtils/getPageHeader';
+import { HeroProject } from '../../../components/layout/hero-project';
+import { ProjectCredits } from '../../../components/layout/project-credits';
 
 type PageProps = {
 	params: { project?: string };

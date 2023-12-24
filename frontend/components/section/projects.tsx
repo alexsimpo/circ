@@ -1,16 +1,14 @@
 'use client';
-import { Button, ConditionalLink } from 'components/element/button';
-import { Media } from 'components/media/media';
-import Link from 'next/link';
-import { FeaturedProjectsSection } from 'types';
-import { cn } from 'utils/classNameUtils';
+import { Button, ConditionalLink } from '../element/button';
+import { Media } from '../media/media';
+import { FeaturedProjectsSection } from '../../types';
+import { cn } from '../../utils/classNameUtils';
 import {
-	getBackgroundColor,
 	getHorizontalGridGutter,
 	getSectionalPadding,
 	getVerticalGridGutter,
-} from 'utils/sectionUtils';
-import { normalizeText } from 'utils/textUtils';
+} from '../../utils/sectionUtils';
+import { normalizeText } from '../../utils/textUtils';
 
 interface ProjectCard {
 	project: any;

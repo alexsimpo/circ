@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
-import { cn } from 'utils/classNameUtils';
+import { cn } from '../../utils/classNameUtils';
 
 interface MediaProps {
 	className?: string;

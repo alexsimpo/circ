@@ -1,9 +1,9 @@
-import { getUrlFromLink } from 'utils/pageUtils';
-import { Display, TextCtaSection } from 'types';
+import { getUrlFromLink } from '../../utils/pageUtils';
+import { Display, TextCtaSection } from '../../types';
 import Link from 'next/link';
-import { RichText } from 'components/rich-text';
-import { cn } from 'utils/classNameUtils';
-import { getSectionalPadding } from 'utils/sectionUtils';
+import { RichText } from '../rich-text';
+import { cn } from '../../utils/classNameUtils';
+import { getSectionalPadding } from '../../utils/sectionUtils';
 
 const defaultDisplay: Partial<Display> = {};
 

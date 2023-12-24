@@ -1,6 +1,7 @@
 // import { getPage } from '@/utils/serverUtils';
-import getProjects from 'utils/serverUtils/getProjects';
-import { FeaturedProjects } from 'components/section/projects';
+import getProjects from '../../utils/serverUtils/getProjects';
+import { FeaturedProjects } from '../../components/section/projects';
+import { Metadata, ResolvingMetadata } from 'next';
 
 export async function generateMetadata(
 	parent: ResolvingMetadata

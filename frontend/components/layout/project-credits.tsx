@@ -1,7 +1,6 @@
-import { CardItem, CardsSection, Display, Section } from 'types';
-import { cn } from 'utils/classNameUtils';
 import { getSectionalPadding, getTextSize } from 'utils/sectionUtils';
-import { nl2br } from 'utils/stringUtils';
+import { nl2br } from '../../utils/stringUtils';
+import { cn } from '../../utils/classNameUtils';
 
 export const ProjectCredits = ({
 	credits,

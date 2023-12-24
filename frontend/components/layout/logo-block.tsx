@@ -21,7 +21,7 @@ import CircleOvalOutline from 'public/images/letters/G/circle-oval-outline.svg';
 import CurvyG from 'public/images/letters/G/curvy-g.svg';
 import N from 'public/images/letters/N/n.svg';
 import Arch from 'public/images/letters/N/arch.svg';
-import { cn } from 'utils/classNameUtils';
+import { cn } from '../../utils/classNameUtils';
 import { useState } from 'react';
 
 interface LogoBlockProps {
@@ -34,7 +34,7 @@ export const LogoBlock: React.FC<
 	return (
 		<div
 			{...props}
-			className={cn(className, 'w-full flex items-center logo-block')}
+			className={cn(className, 'logo-block flex w-full items-center')}
 		>
 			<Letter
 				defaultValue="c"
@@ -68,7 +68,7 @@ export const LogoBlock: React.FC<
 				]}
 				width={9.1}
 			/>
-			<div className="w-[6%] h-full"></div>
+			<div className="h-full w-[6%]"></div>
 			<Letter
 				defaultValue="d"
 				data={[
@@ -151,7 +151,7 @@ const Letter = ({ defaultValue, data, width, noSpacing = false }) => {
 			key={i}
 			style={{ width: `${width}%` }}
 			className={cn(
-				'flex-grow h-full letter',
+				'letter h-full flex-grow',
 				!noSpacing && 'mr-[0.925%]',
 				letter.value !== currentValue && 'hidden'
 			)}

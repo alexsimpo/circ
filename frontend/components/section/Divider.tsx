@@ -1,6 +1,6 @@
-import { DividerSection } from 'types';
-import { cn } from 'utils/classNameUtils';
-import { getBorderColor, getWidth } from 'utils/sectionUtils';
+import { DividerSection } from '../../types';
+import { cn } from '../../utils/classNameUtils';
+import { getBorderColor, getWidth } from '../../utils/sectionUtils';
 
 export const Divider: React.FC<DividerSection> = ({ theme, width }) => {
 	return (

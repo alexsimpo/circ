@@ -1,6 +1,6 @@
-import { Media } from 'components/media/media';
-import { CardItem, CardsSection, Display, Section } from 'types';
-import { cn } from 'utils/classNameUtils';
+import { Media } from '../media/media';
+import { CardItem, CardsSection, Display, Section } from '../../types';
+import { cn } from '../../utils/classNameUtils';
 import {
 	getGridColumnSize,
 	getGridColumnSpan,
@@ -8,7 +8,7 @@ import {
 	getSectionalPadding,
 	getTextSize,
 	getVerticalGridGutter,
-} from 'utils/sectionUtils';
+} from '../../utils/sectionUtils';
 
 const defaultDisplay: Partial<Display> = { gutter: 'lg' };
 
