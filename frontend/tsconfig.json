@@ -7,7 +7,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -17,7 +17,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./", // Adjust this if necessary
+    "paths": {
+      "@/components/*": ["./app/components/*"],
+      "@/layout/*": ["./app/layout/*"]
+      // Add more paths as needed
+    },
     "plugins": [
       {
         "name": "next"
