@@ -14,7 +14,7 @@ export const Awards = ({
 }: Partial<CardsSection>) => {
 	const sectionDisplay = { ...defaultDisplay, ...display };
 	const useFullGrid = sectionDisplay.columns ? true : false;
-	const columns = sectionDisplay.columns || items.length;
+	const columns = sectionDisplay.columns || items?.length;
 
 	return (
 		<section className="overflow-hidden">
@@ -26,10 +26,11 @@ export const Awards = ({
 						</h2>
 					)}
 					<div className={cn()}>
-						{items.map((item, index) => {
-							const itemFields = { ...sectionDisplay, ...item };
-							return <Award key={index} {...itemFields} />;
-						})}
+						{items &&
+							items.map((item, index) => {
+								const itemFields = { ...sectionDisplay, ...item };
+								return <Award key={index} {...itemFields} />;
+							})}
 					</div>
 				</div>
 			</div>
@@ -52,9 +53,11 @@ const Award = ({
 	return (
 		<div className="flex flex-col justify-between gap-4 border-b border-black py-6 last:border-b-0 md:flex-row">
 			<h3 className={cn('font-medium', getTextSize('2xl'))}>{heading}</h3>
-			<p className={cn('leading-10 md:text-right', getTextSize('2xl'))}>
-				{nl2br(description)}
-			</p>
+			{description && (
+				<p className={cn('leading-10 md:text-right', getTextSize('2xl'))}>
+					{nl2br(description)}
+				</p>
+			)}
 		</div>
 	);
 };

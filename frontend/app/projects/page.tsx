@@ -23,7 +23,7 @@ export default async function Page() {
 
 	return (
 		<>
-			<FeaturedProjects projects={projects} />
+			<FeaturedProjects _type="featured-projects" projects={projects} />
 		</>
 	);
 }

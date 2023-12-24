@@ -1,4 +1,3 @@
-import { BaseSection } from '@/types/sections';
 import { Fragment } from 'react';
 
 export const nl2br = (str: string) => {
@@ -31,21 +30,4 @@ export const slugify = (str: string) => {
 		.replace(/\s+/g, '-') // replace spaces with hyphens
 		.replace(/-+/g, '-'); // remove consecutive hyphens
 	return str;
-};
-
-export const anchorTag = ({
-	title,
-	type,
-	id,
-	custom,
-}: {
-	title?: BaseSection['title'];
-	id?: BaseSection['id'];
-	type?: string;
-	custom?: string;
-}) => {
-	if (custom) return custom;
-	if (title) return slugify(title);
-	if (type && id) `${type}-section-${id}`;
-	return '';
 };

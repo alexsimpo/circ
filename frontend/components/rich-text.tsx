@@ -9,7 +9,7 @@ export const RichText = ({ value }: RichText) => {
 		marks: {
 			// Ex. 1: custom renderer for the em / italics decorator
 			underline: ({ children }) => (
-				<span className="underline underline-offset-[0.15em] decoration-from-font">
+				<span className="underline decoration-from-font underline-offset-[0.15em]">
 					{children}
 				</span>
 			),
@@ -23,7 +23,7 @@ export const RichText = ({ value }: RichText) => {
 					<a
 						href={value?.href}
 						target={target}
-						rel={target === '_blank' && 'noindex nofollow'}
+						rel={target === '_blank' ? 'noindex nofollow' : ''}
 					>
 						{children}
 					</a>

@@ -64,7 +64,7 @@ export const HeroProject = ({
 									className={cn('flex items-center gap-3', getTextSize('2xl'))}
 								>
 									<div
-										style={{ background: category.color.value }}
+										style={{ background: category.color?.value }}
 										className="h-5 w-5 rounded-full"
 									/>
 									{category.title}

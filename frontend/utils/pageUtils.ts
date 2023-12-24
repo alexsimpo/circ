@@ -17,7 +17,7 @@ export const getUrlFromReference = (reference: LinkReference) => {
 	if (reference._type === 'project') {
 		return `/projects/${reference.slug}`;
 	}
-	return null;
+	return '';
 };
 
 export const getUrlFromStaticProps = (page: string | string[]) => {

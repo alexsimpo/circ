@@ -57,7 +57,7 @@ export const Media: React.FC<MediaProps> = ({
 		delay: 100,
 	});
 
-	if (!videoSrc && !imageSrc) return;
+	if (!videoSrc && !imageSrc) return null;
 
 	return (
 		<figure

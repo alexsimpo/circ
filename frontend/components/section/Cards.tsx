@@ -21,7 +21,7 @@ export const Cards = ({
 }: Partial<CardsSection>) => {
 	const sectionDisplay = { ...defaultDisplay, ...display };
 	const useFullGrid = sectionDisplay.columns ? true : false;
-	const columns = sectionDisplay.columns || items.length;
+	const columns = sectionDisplay.columns || items?.length;
 
 	return (
 		<section className="overflow-hidden">
@@ -37,13 +37,14 @@ export const Cards = ({
 							'grid',
 							getHorizontalGridGutter(sectionDisplay.gutter),
 							getVerticalGridGutter(sectionDisplay.gutter),
-							getGridColumnSize(!useFullGrid && columns)
+							getGridColumnSize(!useFullGrid ? columns : undefined)
 						)}
 					>
-						{items.map((item, index) => {
-							const itemFields = { display: sectionDisplay, ...item };
-							return <Card key={index} {...itemFields} />;
-						})}
+						{items &&
+							items.map((item, index) => {
+								const itemFields = { display: sectionDisplay, ...item };
+								return <Card key={index} {...itemFields} />;
+							})}
 					</div>
 				</div>
 			</div>
@@ -63,7 +64,7 @@ const Card = ({
 	...props
 }: Partial<CardItem>) => {
 	const itemDisplay = { ...defaultCardDisplay, ...display };
-	console.log('itemDisplay', itemDisplay);
+
 	return (
 		<div className={cn('card', getGridColumnSpan(itemDisplay.columns))}>
 			<div className="flex flex-col">
@@ -71,8 +72,8 @@ const Card = ({
 					<Media
 						ratio={mediaRatio || '1'}
 						className="h-full w-full"
-						imageSrc={image.url}
-						alt={image.alt}
+						imageSrc={image?.url}
+						alt={image?.alt}
 					/>
 				)}
 				<h3 className={cn('pt-4', getTextSize('2xl'))}>{heading}</h3>

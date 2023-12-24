@@ -33,7 +33,7 @@ export default async function Page() {
 	return (
 		<>
 			<HeroHome items={page.header.heroSection} />
-			<Divider theme="black" />
+			<Divider _type="divider" theme="black" />
 			{content.pageBuilder && <SectionBuilder content={content.pageBuilder} />}
 		</>
 	);

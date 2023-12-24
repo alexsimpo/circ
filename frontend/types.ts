@@ -2,9 +2,30 @@ export type Projects = {
 	_createdAt: string;
 	_id: string;
 	_rev: string;
-	_type: string;
+	_type?: string;
 	_updatedAt: string;
 	name: string;
+};
+
+export type Project = {
+	_createdAt?: string;
+	_id?: string;
+	_rev?: string;
+	_type?: string;
+	_updatedAt?: string;
+	name?: string;
+	title?: string;
+	slug?: string;
+	description?: string;
+	image?: Image;
+	video?: Video;
+	className?: string;
+	categories?: {
+		title: string;
+		color?: {
+			value: string;
+		};
+	}[];
 };
 
 export type Menu = {
@@ -24,13 +45,13 @@ export type ItemLink = {
 	url?: string;
 	slug?: string;
 	reference?: {
-		_type: string;
+		_type?: string;
 		slug: string;
 	};
 };
 
 export type LinkReference = {
-	_type: string;
+	_type?: string;
 	slug: string;
 };
 
@@ -59,7 +80,8 @@ export type Section = {
 		| 'text-block'
 		| 'text-cta'
 		| 'divider'
-		| 'accordion';
+		| 'accordion'
+		| 'awards';
 	heading?: string;
 	description?: string;
 	link?: ItemLink;
@@ -68,7 +90,6 @@ export type Section = {
 };
 
 export type Display = {
-	_type: 'display';
 	theme?: 'light' | 'black';
 	padding?: 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 	columns?: '1' | '2' | '3' | '4' | '5' | '6';

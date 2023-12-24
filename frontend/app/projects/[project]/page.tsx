@@ -26,6 +26,7 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: PageProps) {
+	if (!params.project) return null;
 	const slug = params.project;
 	const page = await getPageHeader('project', slug);
 	const content = await getContent('project', slug);

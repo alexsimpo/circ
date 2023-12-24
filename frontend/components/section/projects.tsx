@@ -1,7 +1,7 @@
 'use client';
 import { Button, ConditionalLink } from '../element/button';
 import { Media } from '../media/media';
-import { FeaturedProjectsSection } from '../../types';
+import { FeaturedProjectsSection, Project } from '../../types';
 import { cn } from '../../utils/classNameUtils';
 import {
 	getHorizontalGridGutter,
@@ -11,7 +11,7 @@ import {
 import { normalizeText } from '../../utils/textUtils';
 
 interface ProjectCard {
-	project: any;
+	project: Project;
 	className?: string;
 	ratio?: '3/2' | '4/5' | '16/9';
 	row?: number;
@@ -19,7 +19,7 @@ interface ProjectCard {
 	index?: number;
 }
 
-const defaultProjectClasses: ProjectCard[] = [
+const defaultProjectClasses: Partial<ProjectCard>[] = [
 	{
 		project: {
 			className: 'lg:col-start-1 lg:col-end-7',
@@ -98,8 +98,9 @@ export const FeaturedProjects: React.FC<FeaturedProjectsSection> = ({
 									index={index}
 									className={cn(
 										'col-start-1 col-end-13',
-										projectClasses[index % projectClassesLength].project
-											.className
+										projectClasses[index % projectClassesLength] &&
+											projectClasses[index % projectClassesLength].project
+												?.className
 									)}
 								/>
 							);
@@ -112,7 +113,6 @@ export const FeaturedProjects: React.FC<FeaturedProjectsSection> = ({
 };
 
 const ProjectCard: React.FC<ProjectCard> = ({ project, className, index }) => {
-	console.log('project', project);
 	return (
 		<div className={cn(className, 'group flex flex-col')}>
 			<ConditionalLink href={`projects/${project.slug}`}>
@@ -123,7 +123,7 @@ const ProjectCard: React.FC<ProjectCard> = ({ project, className, index }) => {
 			<div className={cn('mt-4 flex justify-between gap-2')}>
 				<h3 className="w-full text-2xl font-medium capitalize group-hover:underline">
 					<ConditionalLink href={`projects/${project.slug}`}>
-						{normalizeText(project.title)}
+						{project.title && normalizeText(project.title)}
 					</ConditionalLink>
 				</h3>
 				<div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ const ProjectCard: React.FC<ProjectCard> = ({ project, className, index }) => {
 							<div
 								key={`${category.title}-${index}`}
 								className={cn('h-5 w-5 rounded-full')}
-								style={{ background: category.color.value }}
+								style={{ background: category.color?.value }}
 							/>
 						))}
 				</div>

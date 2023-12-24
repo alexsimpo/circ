@@ -25,6 +25,7 @@ type PageProps = {
 // }
 
 export default async function Page({ params }: PageProps) {
+	if (!params.slug) return null;
 	const slug = params.slug.join('/');
 	const page = await getPageHeader('page', slug);
 	const content = await getContent('page', slug);
