@@ -83,6 +83,18 @@ export type CardItem = {
 	description?: string;
 	link?: ItemLink;
 	display?: Display;
+	mediaRatio?:
+		| '3/2'
+		| '5/4'
+		| '16/9'
+		| '1'
+		| '4/3'
+		| '3/4'
+		| '9/16'
+		| '4/5'
+		| '2/3'
+		| '2/1'
+		| '3/1';
 };
 
 export type AccordionItem = {

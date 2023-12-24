@@ -82,7 +82,7 @@ const Menu = ({
 }: {
 	menuItems: Menu['menuItems'];
 	isMenuOpen: boolean;
-	setIsMenuOpen: () => void;
+	setIsMenuOpen: (isMenuOpen: boolean) => void;
 }) => {
 	return (
 		<div
