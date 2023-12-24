@@ -10,21 +10,21 @@ type PageProps = {
 	params: { slug?: string[] };
 };
 
-export async function generateMetadata(
-	{ params }: PageProps,
-	parent: ResolvingMetadata
-): Promise<Metadata> {
-	// const { meta } = await getPage(params.slug || [], localeKey, searchParams);
+// export async function generateMetadata(
+// 	{ params }: PageProps,
+// 	parent: ResolvingMetadata
+// ): Promise<Metadata> {
+// 	// const { meta } = await getPage(params.slug || [], localeKey, searchParams);
 
-	return {
-		// title: `${meta.meta_title}`,
-		// description: meta.meta_description,
-		// openGraph: {
-		// 	title: meta.share_title,
-		// 	description: meta.share_description,
-		// },
-	};
-}
+// 	return {
+// 		// title: `${meta.meta_title}`,
+// 		// description: meta.meta_description,
+// 		// openGraph: {
+// 		// 	title: meta.share_title,
+// 		// 	description: meta.share_description,
+// 		// },
+// 	};
+// }
 
 export default async function Page() {
 	const page = await getPageHeader('page', 'home');
@@ -34,7 +34,7 @@ export default async function Page() {
 		<>
 			<HeroHome items={page.header.heroSection} />
 			<Divider theme="black" />
-			<SectionBuilder content={content.pageBuilder} />
+			{content.pageBuilder && <SectionBuilder content={content.pageBuilder} />}
 		</>
 	);
 }

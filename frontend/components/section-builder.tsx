@@ -10,24 +10,28 @@ import { TextBlock } from './section/text-block';
 
 export const SectionBuilder = ({ content }: { content: AllSections[] }) => {
 	if (!content) return;
-	return content.map((section, index) => {
-		switch (section._type) {
-			case 'text-block':
-				return <TextBlock key={index} {...section} />;
-			case 'text-cta':
-				return <TextCta key={index} {...section} />;
-			case 'divider':
-				return <Divider key={index} {...section} />;
-			case 'featured-projects':
-				return <FeaturedProjects key={index} {...section} />;
-			case 'cards':
-				return <Cards key={index} {...section} />;
-			case 'accordion':
-				return <Accordion key={index} {...section} />;
-			case 'awards':
-				return <Awards key={index} {...section} />;
-			default:
-				return <section key={index}>default</section>;
-		}
-	});
+	return (
+		<>
+			{content.map((section, index) => {
+				switch (section._type) {
+					case 'text-block':
+						return <TextBlock key={index} {...section} />;
+					case 'text-cta':
+						return <TextCta key={index} {...section} />;
+					case 'divider':
+						return <Divider key={index} {...section} />;
+					case 'featured-projects':
+						return <FeaturedProjects key={index} {...section} />;
+					case 'cards':
+						return <Cards key={index} {...section} />;
+					case 'accordion':
+						return <Accordion key={index} {...section} />;
+					case 'awards':
+						return <Awards key={index} {...section} />;
+					default:
+						return <section key={index}>default</section>;
+				}
+			})}
+		</>
+	);
 };
