@@ -35,7 +35,7 @@ export default async (type: string, slug: string) => {
 				}
 			}
 		}`,
-		{ type, slug }
+		{ type, slug, cache: 'no-store' }
 	);
 
 	return page;

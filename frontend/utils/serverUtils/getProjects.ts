@@ -27,7 +27,8 @@ export default async () => {
 				_id,
 				url
 			},
-		}`
+		}`,
+		{ cache: 'no-store' }
 	);
 
 	return projects;
