@@ -16,8 +16,8 @@ export const HeroContact = ({ heading, description }: HeroProps) => {
 				>
 					<div
 						className={cn(
-							'grid grid-cols-4 gap-4 lg:gap-8',
-							getSectionalPadding('xs')
+							getSectionalPadding('xs'),
+							'grid grid-cols-4 gap-4 lg:gap-8'
 						)}
 					>
 						<h1
